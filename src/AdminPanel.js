@@ -7,7 +7,7 @@ const AdminPanel = () => {
   useEffect(() => {
     async function fetchSubmissions() {
       try {
-        const response = await axios.get('/api/submissions');
+        const response = await axios.get('http://localhost:5000/api/submissions');
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching submissions:', error);
@@ -32,7 +32,7 @@ const AdminPanel = () => {
       console.error('Error updating submission status:', error);
     }
   };
-
+  console.log('response ',submissions)
   return (
     <div>
       <h2>Admin Panel</h2>
