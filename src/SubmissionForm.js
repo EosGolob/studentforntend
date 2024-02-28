@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import './Submission.css';
 
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectTitle: '',
-    projectDescription: '',
+    firstName:'',
+    middleName:'',
+    lastName:'',
+    email:'',
+    interviewDate:'',
+    jobProfile:'',
+    qualification:'',
+    phoneNo:'',
+
   });
 
   const handleChange = (e) => {
@@ -30,25 +36,33 @@ const SubmissionForm = () => {
       if (response.ok) {
         const result = await response.json();
         console.log('Submission successful', result);
-        // Handle success (e.g., showing a success message, clearing the form)
       } else {
         throw new Error('Submission failed');
       }
     } catch (error) {
       console.error(error);
-      // Handle error (e.g., showing an error message)
     }
   };
-    // console.log('Form data:', formData);
-    // Here you would typically send the data to the backend server
-  // };
+    
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Project Submission Form</h2>
+    <form onSubmit={handleSubmit} className="form-container">
+      <h2>Empoloyee Register Form</h2>
       <label>
-        Name:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        First Name:
+        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+      </label>
+      <br/>
+      <br/>
+      <label>
+        Middle Name:
+        <input type="text" name="middleName" value={formData.middleName} onChange={handleChange} required />
+      </label>
+      <br/>
+      <br/>
+      <label>
+        Last Name:
+        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
       </label>
       <br/>
       <br/>
@@ -59,14 +73,26 @@ const SubmissionForm = () => {
       <br/>
       <br/>
       <label>
-        Project Title:
-        <input type="text" name="projectTitle" value={formData.projectTitle} onChange={handleChange} required />
+      interview Date :
+        <input type="date" name="interviewDate" value={formData.interviewDate} onChange={handleChange} required />
       </label>
       <br/>
       <br/>
       <label>
-        Project Description:
-        <textarea name="projectDescription" value={formData.projectDescription} onChange={handleChange} required />
+      Job Profile:
+        <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required />
+      </label>
+      <br/>
+      <br/>
+      <label>
+      Qualification:
+        <textarea name="qualification" value={formData.qualification} onChange={handleChange} required />
+      </label>
+      <br/>
+      <br/>
+      <label>
+      phone No:
+        <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={handleChange} required />
       </label>
       <br/>
       <br/>

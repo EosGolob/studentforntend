@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './AdminPanel.css';
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -34,27 +35,32 @@ const AdminPanel = () => {
   };
   console.log('response ',submissions)
   return (
-    <div>
+    <div className="admin-panel-container">
       <h2>Admin Panel</h2>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
             <th>Email</th>
-            <th>Project Title</th>
-            <th>Project Description</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>Interview Date</th>
+            <th>Job Profile</th>
+            <th>Qualification</th>
+            <th>Phone No</th>
           </tr>
         </thead>
         <tbody>
           {submissions.map(submission => (
             <tr key={submission._id}>
-              <td>{submission.name}</td>
+              <td>{submission.firstName}</td>
+              <td>{submission.middleName}</td>
+              <td>{submission.lastName}</td>
               <td>{submission.email}</td>
-              <td>{submission.projectTitle}</td>
-              <td>{submission.projectDescription}</td>
-              <td>{submission.status}</td>
+              <td>{submission.interviewDate}</td>
+              <td>{submission.jobProfile}</td>
+              <td>{submission.qualification}</td>
+              <td>{submission.phoneNo}</td>
               <td>
                 <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>Approve</button>
                 <button onClick={() => handleUpdateStatus(submission._id, 'rejected')}>Reject</button>
