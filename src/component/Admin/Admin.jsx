@@ -32,6 +32,10 @@ const AdminPanel = () => {
       console.error('Error updating submission status:', error);
     }
   };
+  const handleLogin = (email) => {
+    console.log(`Logged in with email: ${email}`);
+    // You can implement additional logic here after the user logs in
+  };
   console.log('response ',submissions)
   return (
     <div className="admin-panel-container" style={styles.container}>
@@ -48,6 +52,15 @@ const AdminPanel = () => {
             <th>Qualification</th>
             <th>Phone No</th>
             <th>Status</th>
+            <th>permanentAddress</th>
+            <th>currentAddress</th>
+            <th>adharNo</th>
+            <th>panNo</th>
+            <th>gender</th>
+            <th>previousEmployee</th>
+            <th>dob</th>
+            <th>maritalStatus</th>
+            <th>refferral</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +74,15 @@ const AdminPanel = () => {
               <td>{submission.jobProfile}</td>
               <td>{submission.qualification}</td>
               <td>{submission.phoneNo}</td>
+              <td>{submission.permanentAddress}</td>
+              <td>{submission.currentAddress}</td>
+              <td>{submission.adharNo}</td>
+              <td>{submission.panNo}</td>
+              <td>{submission.gender}</td>
+              <td>{submission.previousEmployee}</td>
+              <td>{submission.dob}</td>
+              <td>{submission.maritalStatus}</td>
+              <td>{submission.refferral}</td>
               <td>
                 <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>Approve</button>
                 <button onClick={() => handleUpdateStatus(submission._id, 'rejected')}>Reject</button>
@@ -74,38 +96,49 @@ const AdminPanel = () => {
 };
 
 const styles = {
-    container: {
-      backgroundColor: 'white',
-      padding: '20px',
-      border: '2px solid red',
-      borderRadius: '10px',
-      maxWidth: '800px', // Adjusted maximum width for better readability
-      margin: 'auto', // To center the container horizontally
-    },
-    heading: {
-      color: 'black',
-      background :'red',
-      textAlign: 'center', // Centering the heading text
-    },
-    tableContainer: {
-      overflowX: 'auto', // Enable horizontal scrolling for the table
-    },
-    table: {
-      width: '100%',
-      borderCollapse: 'collapse',
-    },
-    table2:{
-        background : 'red'
-    },
-    tableHeader: {
-      background: 'red', // Red background for table header
-      color: 'black', // Black font color
-    },
-    tableRow: {
-      borderBottom: '1px solid #ddd', // Gray border for table rows
-    },
-    actionButtons: {
-      textAlign: 'center', // Centering the action buttons in the table cell
-    },
-  };
+  container: {
+    backgroundColor: 'white',
+    padding: '20px',
+    border: '2px solid red',
+    borderRadius: '10px',
+    maxWidth: '800px', // Adjusted maximum width for better readability
+    margin: 'auto', // To center the container horizontally
+  },
+  heading: {
+    color: 'black',
+    background: 'red',
+    textAlign: 'center', // Centering the heading text
+  },
+  tableContainer: {
+    overflowX: 'auto', // Enable horizontal scrolling for the table
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+  },
+  table2: {
+    background: 'red',
+  },
+  tableHeader: {
+    background: 'red', // Red background for table header
+    color: 'black', // Black font color
+    padding: '8px', // Padding for the header cells
+    textAlign: 'left', // Align header text to the left
+    fontWeight: 'bold', // Bold font for header text
+  },
+  tableRow: {
+    borderBottom: '1px solid #ddd', // Gray border for table rows
+  },
+  tableCell: {
+    padding: '8px', // Adjust cell padding
+    textAlign: 'left', // Align cell text to the left
+    border: '1px solid #ddd', // Add border to each cell
+    overflow: 'hidden', // Hide overflow content
+    whiteSpace: 'nowrap', // Prevent wrapping
+    textOverflow: 'ellipsis', // Show ellipsis for overflow text
+  },
+  actionButtons: {
+    textAlign: 'center', // Centering the action buttons in the table cell
+  },
+};
 export default AdminPanel;

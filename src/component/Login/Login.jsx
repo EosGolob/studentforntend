@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent default form submission
     try {
-      const response = await axios.post('/api/login', { email, password });
-      console.log(response.data);
+      const response = await axios.post('http://localhost:5000/api/login', { email, password });
+      const {token} =response.data;
+      localStorage.setItem('token', token);
       onLogin(email);
+      navigate('/admin');
     } catch (error) {
+      setError('Invalid email or password');
       console.error(error);
     }
   };
