@@ -8,6 +8,7 @@ import Home from './component/Home/Home';
 import RegisterForm from './component/Form/RegisterForm';
 import Admin from './component/Admin/Admin';
 import Login from './component/Login/Login';
+import AdminRegistrationForm from './component/Form/AdminRegisterForm';
  
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
       {
         path:"login",
         element:<Login/>
-      }
+      },
+      {
+        path:"adminlogin",
+        element:<AdminRegistrationForm/>
+       }
     ]
   }
 ])

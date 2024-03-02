@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Login from '../Login/Login';
+
+
+const isAdmin = true;
+
+// const ParentComponent = () => {
+//   const handleLogin = (email) => {
+//     console.log(`Logged in with email: ${email}`);
+//     // You can implement additional logic here after the user logs in
+//   }; 
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -39,6 +49,7 @@ const AdminPanel = () => {
   console.log('response ',submissions)
   return (
     <div className="admin-panel-container" style={styles.container}>
+      <Login onLogin={handleLogin} isAdmin={isAdmin} />
       <h2 style={styles.heading}></h2>
       <table style={styles.table}>
         <thead style={styles.table2}>
