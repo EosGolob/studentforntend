@@ -1,0 +1,53 @@
+.email-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.email-form {
+    border: 2px solid blue;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: lightgray;
+    width: 400px;
+}
+
+.form-heading {
+    text-align: center;
+    color: black;
+}
+
+.form-label {
+    color: black;
+}
+
+.form-input,
+.form-textarea {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form-textarea {
+    height: 100px;
+}
+
+.form-button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-status {
+    text-align: center;
+    margin-top: 10px;
+}

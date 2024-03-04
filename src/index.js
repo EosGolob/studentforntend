@@ -2,53 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes ,RouterProvider, createBrowserRouter ,createRoutesFromElements } from 'react-router-dom';
 import Layout from './Layout';
-import Home from './component/Home/Home';
 import RegisterForm from './component/Form/RegisterForm';
 import Admin from './component/Admin/Admin';
 import Login from './component/Login/Login';
 import AdminRegistrationForm from './component/Form/AdminRegisterForm';
- 
-const router = createBrowserRouter([
-  {
-    path:'/',
-    element:<Layout/>,
-    children:[
-      {
-        path:"",
-        element: <Home/>
-      },
-      {
-        path:"registerForm",
-        element:<RegisterForm/>
-      },
-      {
-        path:"admin",
-        element:<Admin/>
+import MailSender from './component/Sendemail/mail';
 
-      },
-      {
-        path:"login",
-        element:<Login/>
-      },
-      {
-        path:"adminlogin",
-        element:<AdminRegistrationForm/>
-       }
-    ]
-  }
-])
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path='registerForm' element={<RegisterForm/>} />
+      <Route path='admin' element={<Admin/>} />
+      <Route path='login' element={<Login/>} />
+      <Route path='adminlogin' element={<AdminRegistrationForm/>}/>
+      <Route path='email' element={<MailSender/>} />
+    </Route>
+  )
+)
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={ router}/>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
