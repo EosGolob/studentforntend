@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Login from '../Login/Login';
+import './Admin.css';
 
 
-const isAdmin = true;
+// const isAdmin = true;
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
+  const [filterValue, setFilterValue] = useState('');
+  const [filteredSubmissions, setFilteredSubmissions] = useState([]);
 
   useEffect(() => {
     async function fetchSubmissions() {
@@ -32,21 +35,44 @@ const AdminPanel = () => {
         return submission;
       });
       setSubmissions(updatedSubmissions);
+      setFilteredSubmissions(updatedSubmissions);
     } catch (error) {
       console.error('Error updating submission status:', error);
     }
   };
-  const handleLogin = (email) => {
-    console.log(`Logged in with email: ${email}`);
-    // You can implement additional logic here after the user logs in
+  // const handleLogin = (email) => {
+  //   console.log(`Logged in with email: ${email}`);
+  //   // You can implement additional logic here after the user logs in
+  // };
+  const handleFilterChange = (e) => {
+    setFilterValue(e.target.value);
   };
-  console.log('response ',submissions)
+
+  const handleFilterSubmit = () => {
+    const filteredData = submissions.filter(submission => {
+      return (
+        submission.interviewDate.includes(filterValue) || // Filter by interview date
+        submission.email.includes(filterValue) // Filter by email ID
+      );
+    });
+    setFilteredSubmissions(filteredData);
+  };
+  // console.log('response ',submissions)
   return (
-    <div className="admin-panel-container" style={styles.container}>
+    <div className="admin-panel-container" >
       {/* <Login onLogin={handleLogin} isAdmin={isAdmin} /> */}
-      <h2 style={styles.heading}></h2>
-      <table style={styles.table}>
-        <thead style={styles.table2}>
+      <h2>Filter Data </h2>
+      <div>
+        <input
+          type="text"
+          value={filterValue}
+          onChange={handleFilterChange}
+          placeholder="Enter interview date or email ID"
+        />
+        <button onClick={handleFilterSubmit}>Filter</button>
+      </div>
+      <table  id="submissionTable" >
+        <thead>
           <tr>
             <th>First Name</th>
             <th>Middle Name</th>
@@ -64,8 +90,9 @@ const AdminPanel = () => {
             <th>gender</th>
             <th>previousEmployee</th>
             <th>dob</th>
-            <th>maritalStatus</th>
+            <th>Marital Status</th>
             <th>refferral</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -100,50 +127,4 @@ const AdminPanel = () => {
   );
 };
 
-const styles = {
-  container: {
-    backgroundColor: 'white',
-    padding: '20px',
-    border: '2px solid red',
-    borderRadius: '10px',
-    maxWidth: '800px', // Adjusted maximum width for better readability
-    margin: 'auto', // To center the container horizontally
-  },
-  heading: {
-    color: 'black',
-    background: 'red',
-    textAlign: 'center', // Centering the heading text
-  },
-  tableContainer: {
-    overflowX: 'auto', // Enable horizontal scrolling for the table
-  },
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse',
-  },
-  table2: {
-    background: 'red',
-  },
-  tableHeader: {
-    background: 'red', // Red background for table header
-    color: 'black', // Black font color
-    padding: '8px', // Padding for the header cells
-    textAlign: 'left', // Align header text to the left
-    fontWeight: 'bold', // Bold font for header text
-  },
-  tableRow: {
-    borderBottom: '1px solid #ddd', // Gray border for table rows
-  },
-  tableCell: {
-    padding: '8px', // Adjust cell padding
-    textAlign: 'left', // Align cell text to the left
-    border: '1px solid #ddd', // Add border to each cell
-    overflow: 'hidden', // Hide overflow content
-    whiteSpace: 'nowrap', // Prevent wrapping
-    textOverflow: 'ellipsis', // Show ellipsis for overflow text
-  },
-  actionButtons: {
-    textAlign: 'center', // Centering the action buttons in the table cell
-  },
-};
 export default AdminPanel;

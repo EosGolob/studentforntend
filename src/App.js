@@ -4,8 +4,8 @@ import AdminPanel from './AdminPanel';
 function App() {
   return (
     <div className="App">
-       <SubmissionForm/>
-       <AdminPanel/>
+       {/* <SubmissionForm/>
+       <AdminPanel/> */}
     </div>
   );
 }

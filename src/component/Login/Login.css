@@ -7,7 +7,7 @@
   }
   
   .login-form {
-    border: 2px solid red;
+    border: 2px solid rgb(97, 174, 224);
     padding: 20px;
     border-radius: 10px;
     background-color: lightgray;
@@ -32,7 +32,7 @@
   }
   
   .form-button {
-    background-color: red;
+    background-color: rgb(82, 140, 218);
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -40,5 +40,10 @@
     cursor: pointer;
     margin-top: 20px;
     width: 100%;
+  }
+  .error-message {
+    color: red;
+    text-transform: capitalize;
+    font-weight: normal !important;
   }
   

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
+
   const Login = ({ onLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +15,7 @@ import './Login.css'
       const response = await axios.post('http://localhost:5000/api/Adminlogin', { email, password });
       const {token} =response.data;
       localStorage.setItem('token', token);
-      navigate('/email');
+      navigate('/employeedetailsdashboard')
     } catch (error) {
       setError('Invalid email or password');
       console.error(error);
@@ -25,6 +26,7 @@ import './Login.css'
   <div className="login-container">
       <form onSubmit={handleLogin} className="login-form">
         <h2 className="form-heading">Login</h2>
+        {error && <p className="error-message">{error}</p>} 
         <label htmlFor="email" className="form-label">Email:</label>
         <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required className="form-input" />
         <label htmlFor="password" className="form-label">Password:</label>
