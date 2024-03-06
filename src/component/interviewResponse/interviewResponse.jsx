@@ -40,6 +40,7 @@ function InterviewResponse() {
               <td>{submission.email}</td>
               <td>{submission.interviewDate}</td>
               <td>{submission.jobProfile}</td>
+              <td>{submission.status}</td>
               {/* Add more table cells for other fields */}
             </tr>
           ))}

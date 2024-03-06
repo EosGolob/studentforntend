@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Login from '../Login/Login';
 import './Admin.css';
-
-
-// const isAdmin = true;
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
-  const [filterValue, setFilterValue] = useState('');
-  const [filteredSubmissions, setFilteredSubmissions] = useState([]);
+
 
   useEffect(() => {
     async function fetchSubmissions() {
@@ -25,7 +20,7 @@ const AdminPanel = () => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      const response = await axios.put(`/api/submissions/${id}/updateStatus`, { status: newStatus });
+      const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus });
       console.log('Submission status updated:', response.data);
       // Update submissions state to reflect the changes
       const updatedSubmissions = submissions.map(submission => {
@@ -35,42 +30,23 @@ const AdminPanel = () => {
         return submission;
       });
       setSubmissions(updatedSubmissions);
-      setFilteredSubmissions(updatedSubmissions);
     } catch (error) {
       console.error('Error updating submission status:', error);
     }
   };
-  // const handleLogin = (email) => {
-  //   console.log(`Logged in with email: ${email}`);
-  //   // You can implement additional logic here after the user logs in
-  // };
-  const handleFilterChange = (e) => {
-    setFilterValue(e.target.value);
-  };
-
-  const handleFilterSubmit = () => {
-    const filteredData = submissions.filter(submission => {
-      return (
-        submission.interviewDate.includes(filterValue) || // Filter by interview date
-        submission.email.includes(filterValue) // Filter by email ID
-      );
-    });
-    setFilteredSubmissions(filteredData);
-  };
-  // console.log('response ',submissions)
+  const handleManagerResponse = async (id, response) => {
+    try {
+      // Update the submission with manager response in the database
+      const updatedSubmission = await axios.put(`http://localhost:5000/api/submissions/${id}/managerResponse`, { response });
+      console.log('Manager response saved:', updatedSubmission.data);
+      // You can update the state or perform any other actions as needed
+    } catch (error) {
+      console.error('Error saving manager response:', error);
+    }
+  }
+  
   return (
     <div className="admin-panel-container" >
-      {/* <Login onLogin={handleLogin} isAdmin={isAdmin} /> */}
-      <h2>Filter Data </h2>
-      <div>
-        <input
-          type="text"
-          value={filterValue}
-          onChange={handleFilterChange}
-          placeholder="Enter interview date or email ID"
-        />
-        <button onClick={handleFilterSubmit}>Filter</button>
-      </div>
       <table  id="submissionTable" >
         <thead>
           <tr>
@@ -82,7 +58,6 @@ const AdminPanel = () => {
             <th>Job Profile</th>
             <th>Qualification</th>
             <th>Phone No</th>
-            <th>Status</th>
             <th>permanentAddress</th>
             <th>currentAddress</th>
             <th>adharNo</th>
@@ -91,8 +66,8 @@ const AdminPanel = () => {
             <th>previousEmployee</th>
             <th>dob</th>
             <th>Marital Status</th>
-            <th>refferral</th>
-            <th>Status</th>
+            <th>referral</th>
+            <th>Manager Response</th>
           </tr>
         </thead>
         <tbody>
@@ -114,11 +89,19 @@ const AdminPanel = () => {
               <td>{submission.previousEmployee}</td>
               <td>{submission.dob}</td>
               <td>{submission.maritalStatus}</td>
-              <td>{submission.refferral}</td>
+              <td>{submission.referral}</td>
+             
               <td>
+                {/* <button onClick={() => handleUpdateStatus(submission._id, '')}>Select your response</button> */}
                 <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>Approve</button>
                 <button onClick={() => handleUpdateStatus(submission._id, 'rejected')}>Reject</button>
+                <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>hold</button>
               </td>
+              {/* <td>
+                <button onClick={() => handleManagerResponse(submission._id, 'Manager response')}>
+                  Add Manager Response
+                </button>
+                </td> */}
             </tr>
           ))}
         </tbody>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './registerform.css'
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
     firstName:'',
@@ -23,55 +23,41 @@ const SubmissionForm = () => {
   });
  
   const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
+    setErrors(prevErrors => ({
+      ...prevErrors,
+      [name]: ''
+    }));
   };
+
+  console.log('submiddion data', formData)
 
   const validateForm = () => {
     let valid = true;
-    const errors = {}
+    const newErrors  = {}
     
-      // First Name validation
-      if (!formData.firstName.trim()) {
-        errors.firstName = 'First name is required';
+       // Validation logic for each field
+    const requiredFields = ['firstName',
+     'lastName', 'email', 'interviewDate', 
+     'jobProfile', 'qualification', 'phoneNo', 
+     'permanentAddress', 'currentAddress', 
+     'adharNo', 'panNo', 'gender', 'previousEmployee', 
+     'dob', 'maritalStatus', 'referral'];
+    requiredFields.forEach(field => {
+      if (!formData[field].trim()) {
+        newErrors[field] = `${field} is required`;
         valid = false;
       }
-    
-      // Last Name validation
-      if (!formData.lastName.trim()) {
-        errors.lastName = 'Last name is required';
-        valid = false;
-      }
+    });
     
       // Email validation
-      if (!formData.email.trim()) {
-        errors.email = 'Email is required';
-        valid = false;
-      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        errors.email = 'Invalid email address';
-        valid = false;
-      }
-    
-      // Interview Date validation
-      if (!formData.interviewDate) {
-        errors.interviewDate = 'Interview date is required';
-        valid = false;
-      }
-    
-      // Job Profile validation
-      if (!formData.jobProfile.trim()) {
-        errors.jobProfile = 'Job profile is required';
-        valid = false;
-      }
-    
-      // Qualification validation
-      if (!formData.qualification.trim()) {
-        errors.qualification = 'Qualification is required';
+      if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = 'Invalid email address';
         valid = false;
       }
     
@@ -82,63 +68,8 @@ const SubmissionForm = () => {
       } else if (!/^\d{3}-\d{3}-\d{4}$/.test(formData.phoneNo)) {
         errors.phoneNo = 'Invalid phone number format (e.g., 123-456-7890)';
         valid = false;
-      }
-    
-      // Permanent Address validation
-      if (!formData.permanentAddress.trim()) {
-        errors.permanentAddress = 'Permanent address is required';
-        valid = false;
-      }
-    
-      // Current Address validation
-      if (!formData.currentAddress.trim()) {
-        errors.currentAddress = 'Current address is required';
-        valid = false;
-      }
-    
-      // Adhar No validation
-      if (!formData.adharNo.trim()) {
-        errors.adharNo = 'Adhar number is required';
-        valid = false;
-      }
-    
-      // Pan No validation
-      if (!formData.panNo.trim()) {
-        errors.panNo = 'Pan number is required';
-        valid = false;
-      }
-    
-      // Gender validation
-      if (!formData.gender) {
-        errors.gender = 'Gender is required';
-        valid = false;
-      }
-    
-      // Previous Employee validation
-      if (!formData.previousEmployee.trim()) {
-        errors.previousEmployee = 'Previous employee information is required';
-        valid = false;
-      }
-    
-      // Date of Birth validation
-      if (!formData.dob) {
-        errors.dob = 'Date of birth is required';
-        valid = false;
-      }
-    
-      // Marital Status validation
-      if (!formData.maritalStatus) {
-        errors.maritalStatus = 'Marital status is required';
-        valid = false;
-      }
-    
-      // Referral validation
-      if (!formData.referral.trim()) {
-        errors.referral = 'Referral information is required';
-        valid = false;
-      }
-    
-      setErrors(errors);
+      }   
+      setErrors(newErrors);
       return valid;
   };
  const handleSubmit = async (e) => {
@@ -170,127 +101,128 @@ const SubmissionForm = () => {
 
   
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: 'white' }}>
-      <form onSubmit={handleSubmit} style={{ border: '2px solid red', padding: '20px', borderRadius: '10px', backgroundColor: 'lightgray', width: '400px' }}>
-        <h2 style={{ textAlign: 'center', color: 'black' }}>Employee Register Form</h2>
+    <div>
+      <form className='formclass' onSubmit={handleSubmit}>
+        <h2>Employee Register Form</h2>
         
-        <label style={{ color: 'black' }}>
+        <label>
           First Name:
-          <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.firstName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.firstName}</p>}
+          <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+          {errors.firstName && <p>{errors.firstName}</p>}
         </label>
         
-        <label style={{ color: 'black' }}>
+        <label>
           Middle Name:
-          <input type="text" name="middleName" value={formData.middleName} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.middleName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.middleName}</p>}
+          <input type="text" name="middleName" value={formData.middleName} onChange={handleChange} required />
+          {errors.middleName && <p>{errors.middleName}</p>}
        </label>
         
-        <label style={{ color: 'black' }}>
+        <label >
           Last Name:
-          <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.lastName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.lastName}</p>}
+          <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+          {errors.lastName && <p>{errors.lastName}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label >
           Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.email && <p style={{ color: 'red', fontSize: '12px' }}>{errors.email}</p>}
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required  />
+          {errors.email && <p>{errors.email}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label >
           Interview Date:
-          <input type="date" name="interviewDate" value={formData.interviewDate} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.interviewDate && <p style={{ color: 'red', fontSize: '12px' }}>{errors.interviewDate}</p>}
+          <input type="date" name="interviewDate" value={formData.interviewDate} onChange={handleChange} required />
+          {errors.interviewDate && <p>{errors.interviewDate}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Job Profile:
-          <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.jobProfile && <p style={{ color: 'red', fontSize: '12px' }}>{errors.jobProfile}</p>}
+          <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required  />
+          {errors.jobProfile && <p >{errors.jobProfile}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Qualification:
-          <textarea name="qualification" value={formData.qualification} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.qualification && <p style={{ color: 'red', fontSize: '12px' }}>{errors.qualification}</p>}
+          <textarea name="qualification" value={formData.qualification} onChange={handleChange} required />
+          {errors.qualification && <p>{errors.qualification}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Phone No:
-          <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.phoneNo && <p style={{ color: 'red', fontSize: '12px' }}>{errors.phoneNo}</p>}
+          <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={handleChange} required  />
+          {errors.phoneNo && <p>{errors.phoneNo}</p>}
         </label>
         
-        <label style={{ color: 'black' }}>
+        <label>
           Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.password && <p style={{ color: 'red', fontSize: '12px' }}>{errors.password}</p>}
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          {errors.password && <p>{errors.password}</p>}
         </label>
         
-        <label style={{ color: 'black' }}>
+        <label>
           Permanent Address:
-          <input type="text" name="permanentAddress" value={formData.permanentAddress} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.permanentAddress && <p style={{ color: 'red', fontSize: '12px' }}>{errors.permanentAddress}</p>}
+          <input type="text" name="permanentAddress" value={formData.permanentAddress} onChange={handleChange} />
+          {errors.permanentAddress && <p>{errors.permanentAddress}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Current Address:
-          <input type="text" name="currentAddress" value={formData.currentAddress} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.currentAddress && <p style={{ color: 'red', fontSize: '12px' }}>{errors.currentAddress}</p>}
+          <input type="text" name="currentAddress" value={formData.currentAddress} onChange={handleChange}  />
+          {errors.currentAddress && <p>{errors.currentAddress}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Adhar No:
-          <input type="text" name="adharNo" value={formData.adharNo} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.adharNo && <p style={{ color: 'red', fontSize: '12px' }}>{errors.adharNo}</p>}
+          <input type="text" name="adharNo" value={formData.adharNo} onChange={handleChange} />
+          {errors.adharNo && <p>{errors.adharNo}</p>}
         </label>
       
-        <label style={{ color: 'black' }}>
+        <label>
           Pan No:
-          <input type="text" name="panNo" value={formData.panNo} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.panNo && <p style={{ color: 'red', fontSize: '12px' }}>{errors.panNo}</p>}
+          <input type="text" name="panNo" value={formData.panNo} onChange={handleChange} />
+          {errors.panNo && <p>{errors.panNo}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Gender:         
-          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }}>
-            <option value="">Select Marital Status</option>
-            <option value="Single">Single</option>
-            <option value="Married">Married</option>
+          <select name="gender" value={formData.gender} onChange={handleChange} required >
+          <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
             </select>
-          {errors.maritalStatus && <p style={{ color: 'red', fontSize: '12px' }}>{errors.maritalStatus}</p>}
+          {errors.gender && <p >{errors.gender}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Previous Employee:
-          <input type="text" name="previousEmployee" value={formData.previousEmployee} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.firstName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.firstName}</p>}
+          <input type="text" name="previousEmployee" value={formData.previousEmployee} onChange={handleChange}/>
+          {errors.previousEmployee && <p>{errors.previousEmployee}</p>}
         </label>
        
-        <label style={{ color: 'black' }}>
+        <label>
           Date of Birth:
-          <input type="date" name="dob" value={formData.dob} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.firstName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.firstName}</p>}
+          <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+          {errors.dob && <p>{errors.dob}</p>}
         </label>
         
-        <label style={{ color: 'black' }}>
+        <label>
           Marital Status:
-          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }}>
+          <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required >
             <option value="">Select Marital Status</option>
             <option value="Single">Single</option>
             <option value="Married">Married</option>
           </select>
-          {errors.firstName && <p style={{ color: 'red', fontSize: '12px' }}>{errors.firstName}</p>}
+          {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
         </label>
 
-        <label style={{ color: 'black' }}>
+        <label>
           Referral:
-          <input type="text" name="referral" value={formData.referral} onChange={handleChange} style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }} />
-          {errors.referral  && <p style={{ color: 'red', fontSize: '12px' }}>{errors.referral }</p>}
+          <input type="text" name="referral" value={formData.referral} onChange={handleChange} />
+          {errors.referral  && <p>{errors.referral }</p>}
         </label>
 
-        <button type="submit" style={{ backgroundColor: 'red', color: 'white', padding: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '20px', width: '100%' }}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

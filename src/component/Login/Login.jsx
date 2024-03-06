@@ -10,12 +10,12 @@ import './Login.css'
   const navigate = useNavigate();
   
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     try {
       const response = await axios.post('http://localhost:5000/api/Adminlogin', { email, password });
       const {token} =response.data;
       localStorage.setItem('token', token);
-      navigate('/employeedetailsdashboard')
+      navigate('/employeedetailsdashboard',{ state: { email } })
     } catch (error) {
       setError('Invalid email or password');
       console.error(error);

@@ -1,0 +1,61 @@
+.formclass {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formclass h2 {
+    text-align: center;
+  }
+  
+  .formclass label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .formclass label span {
+    flex: 0 0 150px; /* Adjust the width of the label column as needed */
+  }
+  
+  .formclass input[type="text"],
+  .formclass input[type="email"],
+  .formclass input[type="password"],
+  .formclass input[type="tel"],
+  .formclass textarea,
+  .formclass select {
+    flex: 1;
+    padding: 10px;
+    margin-left: 10px; /* Adjust the spacing between label and input field */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .formclass textarea {
+    resize: vertical;
+  }
+  
+  .formclass p {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  .formclass button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .formclass button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
