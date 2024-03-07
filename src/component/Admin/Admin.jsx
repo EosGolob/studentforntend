@@ -4,7 +4,7 @@ import './Admin.css';
 
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
-
+  
 
   useEffect(() => {
     async function fetchSubmissions() {
@@ -17,6 +17,8 @@ const AdminPanel = () => {
     }
     fetchSubmissions();
   }, []);
+
+
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {

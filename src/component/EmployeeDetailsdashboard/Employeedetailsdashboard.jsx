@@ -1,10 +1,13 @@
-import React ,{ useState } from 'react';
+import React ,{ useState , useEffect } from 'react';
 import './Employeedetailsdashboard.css';
-import { useLocation , useNavigate } from 'react-router-dom';
-const SideDashboard = () => {
+import { useLocation , useNavigate,BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
+const Employeedetailsdashboard = () => {
+// const SideDashboard = () => {
   const [error, setError] = useState("");
   const location = useLocation();
-  const email = location.state.email; 
+  const email = location.state ? location.state.email:'';
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,9 +16,18 @@ const SideDashboard = () => {
     // Redirect to login page
     navigate('/login');
   };
+// this code is for if user logout the contain won't show after once logout
+  useEffect(() => {
+    // Check if the user is authenticated
+    const isAuthenticated = localStorage.getItem('token');
+    if (!isAuthenticated) {
+      // Redirect to login page if not authenticated
+      navigate('/login');
+    }
+  }, []);
 
   return (
-    <>
+  
     <div className="side-dashboard">
       <ul className='EmpDetails'>
         <li>USER:{email}</li>
@@ -26,11 +38,8 @@ const SideDashboard = () => {
         <li><a href="#">Contact</a></li>
         <button onClick={handleLogout}>Logout</button>
       </ul>     
-    </div>
-
-  
-    </>
+    </div> 
   );
 };
 
-export default SideDashboard;
+export default Employeedetailsdashboard;
