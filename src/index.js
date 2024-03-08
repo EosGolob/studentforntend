@@ -11,7 +11,7 @@ import AdminRegistrationForm from './component/Form/AdminRegisterForm';
 import MailSender from './component/Sendemail/mail';
 import Employeedetailsdashboard from './component/EmployeeDetailsdashboard/Employeedetailsdashboard';
 import InterviewResponse from './component/interviewResponse/interviewResponse'
-
+import Whatsapp from './component/whatsapp/whatsapp'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +23,7 @@ const router = createBrowserRouter(
       <Route path='email' element={<MailSender/>} />
       <Route path ='employeedetailsdashboard' element={<Employeedetailsdashboard/>}/>
       <Route path='interviewresponse' element={<InterviewResponse/>}/>
+      <Route path='whatsapp' element={<Whatsapp/>}/>
     </Route>
   )
 )

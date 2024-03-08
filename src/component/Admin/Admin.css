@@ -48,3 +48,51 @@
   button:hover {
     background-color: #45a049;
   }
+
+
+  .search-fields {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-fields label {
+    margin-right: 10px;
+  }
+  
+  .search-fields input,
+  .search-fields .react-datepicker-wrapper {
+    margin-right: 10px;
+  }
+  
+  .search-fields input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-fields input:focus {
+    outline: none;
+    border-color: #007bff; /* Change to your preferred focus color */
+  }
+  
+  .react-datepicker-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .react-datepicker-wrapper input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .react-datepicker__input-container input {
+    width: 100%;
+  }
+  
+  .react-datepicker__input-container input:focus {
+    outline: none;
+    border-color: #007bff; /* Change to your preferred focus color */
+  }
+  

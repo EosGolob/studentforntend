@@ -1,7 +1,6 @@
 import React ,{ useState , useEffect } from 'react';
 import './Employeedetailsdashboard.css';
-import { useLocation , useNavigate,BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { useLocation , useNavigate,BrowserRouter as Routes, Route } from 'react-router-dom';
 
 const Employeedetailsdashboard = () => {
 // const SideDashboard = () => {
@@ -27,7 +26,7 @@ const Employeedetailsdashboard = () => {
   }, []);
 
   return (
-  
+ 
     <div className="side-dashboard">
       <ul className='EmpDetails'>
         <li>USER:{email}</li>
@@ -35,7 +34,7 @@ const Employeedetailsdashboard = () => {
         <li><a href="/email">Send email new Employee</a></li>
         <li><a href="/admin">Employee details</a></li>
         <li><a href="/interviewresponse">Interview Response </a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/whatsapp">Contact</a></li>
         <button onClick={handleLogout}>Logout</button>
       </ul>     
     </div> 

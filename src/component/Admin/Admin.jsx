@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Admin.css';
-
+import DatePicker from 'react-datepicker'; // Import the DatePicker component
+import 'react-datepicker/dist/react-datepicker.css';
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
-  
+  const [searchEmail, setSearchEmail] = useState('');
+  const [searchDate, setSearchDate] = useState(null);
 
+  const formatDate = date => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}T00:00:00.000+00:00`;
+  };
   useEffect(() => {
     async function fetchSubmissions() {
       try {
@@ -17,8 +25,18 @@ const AdminPanel = () => {
     }
     fetchSubmissions();
   }, []);
-
-
+  const filteredSubmissions = submissions.filter(submission => {
+    const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
+    if (!searchDate) return matchEmail; // If search date is not set, only filter by email
+    
+    // Parse submission's interview date into Date object
+    const submissionDate = new Date(submission.interviewDate);
+    
+    // Check if the submission date matches the selected date (ignoring time)
+    const matchDate = submissionDate.toDateString() === searchDate.toDateString();
+    
+    return matchEmail && matchDate;
+  });
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
@@ -36,6 +54,10 @@ const AdminPanel = () => {
       console.error('Error updating submission status:', error);
     }
   };
+
+
+  
+  /*
   const handleManagerResponse = async (id, response) => {
     try {
       // Update the submission with manager response in the database
@@ -46,9 +68,25 @@ const AdminPanel = () => {
       console.error('Error saving manager response:', error);
     }
   }
-  
+  */
   return (
     <div className="admin-panel-container" >
+      <div className="search-fields">
+        <label>Filter By Date and Email: </label>
+        <input
+          type="text"
+          placeholder="Search by Email"
+          value={searchEmail}
+          onChange={e => setSearchEmail(e.target.value)}
+        />
+        <DatePicker
+          selected={searchDate}
+          onChange={date => setSearchDate(date)}
+          dateFormat="yyyy-MM-dd"
+          placeholderText="Select Interview Date"
+          isClearable
+        />
+      </div>
       <table  id="submissionTable" >
         <thead>
           <tr>
@@ -73,7 +111,7 @@ const AdminPanel = () => {
           </tr>
         </thead>
         <tbody>
-          {submissions.map(submission => (
+          {filteredSubmissions.map(submission => (
             <tr key={submission._id}>
               <td>{submission.firstName}</td>
               <td>{submission.middleName}</td>
@@ -91,19 +129,13 @@ const AdminPanel = () => {
               <td>{submission.previousEmployee}</td>
               <td>{submission.dob}</td>
               <td>{submission.maritalStatus}</td>
-              <td>{submission.referral}</td>
-             
+              <td>{submission.referral}</td>            
               <td>
-                {/* <button onClick={() => handleUpdateStatus(submission._id, '')}>Select your response</button> */}
-                <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>Approve</button>
-                <button onClick={() => handleUpdateStatus(submission._id, 'rejected')}>Reject</button>
-                <button onClick={() => handleUpdateStatus(submission._id, 'approved')}>hold</button>
+                <button onClick={() => handleUpdateStatus(submission._id, 'approved')} >Approve</button>
+                <button onClick={() => handleUpdateStatus(submission._id, 'rejected')} >Reject</button>
+                <button onClick={() => handleUpdateStatus(submission._id, 'hold')} >hold</button>
               </td>
-              {/* <td>
-                <button onClick={() => handleManagerResponse(submission._id, 'Manager response')}>
-                  Add Manager Response
-                </button>
-                </td> */}
+    
             </tr>
           ))}
         </tbody>
