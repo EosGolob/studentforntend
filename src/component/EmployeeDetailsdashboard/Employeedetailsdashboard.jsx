@@ -36,7 +36,7 @@ const Employeedetailsdashboard = () => {
         <li><a href="/interviewresponse">Interview Response </a></li>
         <li><a href="/whatsapp">Contact</a></li>
         <button onClick={handleLogout}>Logout</button>
-      </ul>     
+      </ul> 
     </div> 
   );
 };
