@@ -1,49 +1,30 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  border: 1px solid #555;
+.dashboard-container {
+  display: flex;
 }
 
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
+.side-dashboard {
+  flex: 0 0 auto;
+  width: 250px; /* Adjust width as needed */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f0f0f0; /* Example background color */
+  border-right: 1px solid #ccc; /* Example border to separate from content */
+  padding: 20px; /* Example padding */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
-li {
-  text-align: center;
-  border-bottom: 1px solid #555;
+.content {
+  margin-top: 0;
+  flex: 1; /* Grow to fill remaining space */
+  height: 100vh; /* Full height of the viewport */
+  padding: 20px; /* Example padding */
+  box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-li:last-child {
-  border-bottom: none;
+/* Optional: Style for links and buttons */
+.EmpDetails li {
+  margin-bottom: 10px; /* Example spacing between list items */
 }
 
-li a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-li a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-} 
-.sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 250px;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  background-color: #f5f5f5;
-  border-left: 1px solid #ddd;
-}
-
-.sidebar-container {
-  padding: 20px;
+button {
+  margin-top: 20px; /* Example spacing between last list item and button */
 }

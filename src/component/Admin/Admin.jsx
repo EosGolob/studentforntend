@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Admin.css';
+// import './Admin.css';
 import DatePicker from 'react-datepicker'; // Import the DatePicker component
 import 'react-datepicker/dist/react-datepicker.css';
 const AdminPanel = () => {

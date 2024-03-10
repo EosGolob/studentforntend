@@ -15,6 +15,7 @@ import './Login.css'
       const response = await axios.post('http://localhost:5000/api/Adminlogin', { email, password });
       const {token} =response.data;
       localStorage.setItem('token', token);
+      localStorage.setItem('userEmail', email); // Set user email in localStorage
       navigate('/employeedetailsdashboard',{ state: { email } })
     } catch (error) {
       setError('Invalid email or password');
