@@ -1,0 +1,38 @@
+.whatsappclass{
+    background-color: #f5f3fa;
+    width: 500px;
+    margin-top: 10%;
+    margin-left: 70px;
+    border-radius: 20px;
+    border-color: #7546ba(83, 79%, 11%, 0.3);
+    border: 2px solid;
+    padding: 20px;
+}
+.whatsappinp{
+    padding: 10px;
+    margin-top: 30px;
+    display: flex;
+
+}
+input[type="text"] {
+   
+    width: 300PX;
+    display: block;
+    background:white;
+    color:black;
+    text-align: center;
+    font-size: 130%;
+    margin-left: 50px;
+}
+.whatsappsubmitbtn{
+    transition-duration: 0.4s;
+    background-color: #7546ba;
+    padding: 10px 20px;
+    width: 200px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+.whatsappsubmitbtn:hover{
+    background-color: #04AA6D;
+    color: white;
+}

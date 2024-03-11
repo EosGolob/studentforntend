@@ -1,49 +1,101 @@
+
+
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: white;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2d0652;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 30px;
+  background-color: #f5f4cce8;
+  /* border-radius: 5px; */
   
-  .login-form {
-    border: 2px solid rgb(97, 174, 224);
-    padding: 20px;
-    border-radius: 10px;
-    background-color: lightgray;
-    width: 400px;
-  }
+}
+
+/* .form-heading {
+  margin-bottom: 20px;
+} */
+
+.form-input {
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 300%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
   
-  .form-heading {
-    text-align: center;
-    color: black;
-  }
+
+}
+.form-control{
+  width: 300px;
+}
+
+.input-group-prepend {
+  padding: 5px;
+}
+
+.input-group-text {
+  padding: 0 10px;
+} 
+
+.show-password {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
   
-  .form-label {
-    color: black;
-  }
+}
+
+.password-toggle {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.admin-register {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  margin-right: 10px;
+ 
+}
+
+.admin-register li {
+  list-style-type: none;
+}
+
+.admin-register a {
+  color: #007bff;
+  text-decoration:dotted;
+}
+
+.admin-register a:hover {
+  text-decoration: underline;
+}
+.form-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   
-  .form-input {
-    display: block;
-    margin: 10px 0;
-    padding: 5px;
-    border-radius: 5px;
-    width: 100%;
-  }
-  
-  .form-button {
-    background-color: rgb(82, 140, 218);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-  }
-  .error-message {
-    color: red;
-    text-transform: capitalize;
-    font-weight: normal !important;
-  }
-  
+}
+
+.form-button:hover {
+  background-color:aliceblue;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './whatsapp.css';
+import { TfiEmail } from "react-icons/tfi";
 const SendMessageForm = () => {
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState(null);
@@ -17,15 +18,21 @@ const SendMessageForm = () => {
   };
 
   return (
-    <div>
+    <div className='whatsappclass'>
       <form onSubmit={sendMessage}>
+        <div  className='whatsappinp'>
+        <TfiEmail />
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type your message here..."
         />
+        </div>
+        <br/>
+        <div className='whatsappsubmitbtn'>
         <button type="submit">Send</button>
+        </div>
       </form>
       {status && <p>{status}</p>}
     </div>

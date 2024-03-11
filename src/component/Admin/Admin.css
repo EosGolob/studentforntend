@@ -28,7 +28,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #80bcec;
+    background-color: #7546ba;
     color: white;
   }
   button {
@@ -73,7 +73,7 @@
   
   .search-fields input:focus {
     outline: none;
-    border-color: #007bff; /* Change to your preferred focus color */
+    border-color: #007bff; 
   }
   
   .react-datepicker-wrapper {
@@ -93,6 +93,6 @@
   
   .react-datepicker__input-container input:focus {
     outline: none;
-    border-color: #007bff; /* Change to your preferred focus color */
+    border-color: #007bff; 
   }
   

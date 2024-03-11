@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // You may need to install axios
-import './interviewResponse.css'
+// import './interviewResponse.css'
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
 

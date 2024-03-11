@@ -6,6 +6,9 @@ import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
 import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
+import { FaUserCircle } from "react-icons/fa";
+import { GiArchiveRegister } from "react-icons/gi";
+
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -38,13 +41,32 @@ const Employeedetailsdashboard = () => {
     <div className="dashboard-container">
     <div className="side-dashboard">
       <ul className='EmpDetails'>
+        <div className='user-icon'>
+        <FaUserCircle /> 
+        </div>
+        <div className='user-details'>
         <li>USER: {userEmail}</li>
+        </div>       
+        <div className='registerForm'>
+        <GiArchiveRegister />
         <li><Link to="/employeedetailsdashboard/registerForm">Employee Register</Link></li>
+        </div>
+        <div className='email'>
         <li><Link to="/employeedetailsdashboard/email"> Send Email </Link></li>
+        </div>
+        <div className='admin'>
         <li><Link to="/employeedetailsdashboard/admin">Employee details</Link></li>
-        <li><Link to="/employeedetailsdashboard/interviewresponse">Interview Response</Link></li>
+        </div>
+       <div className='interviewresponse'>
+       <li><Link to="/employeedetailsdashboard/interviewresponse">Interview Response</Link></li>
+       </div>
+        <div className='whatsapp'>
         <li><Link to="/employeedetailsdashboard/whatsapp">Contact</Link></li>
-        <button onClick={handleLogout}>Logout</button>
+        </div>
+        <div className='empbtn'> 
+        <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
+        </div>
+        
       </ul> 
       </div>
       <div className="content">

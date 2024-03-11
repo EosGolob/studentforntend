@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './Admin.css';
-import DatePicker from 'react-datepicker'; // Import the DatePicker component
+import './Admin.css';
+import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css';
 const AdminPanel = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -87,6 +87,8 @@ const AdminPanel = () => {
           isClearable
         />
       </div>
+      <br/>
+    
       <table  id="submissionTable" >
         <thead>
           <tr>
