@@ -8,7 +8,7 @@ import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
 import { FaUserCircle } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
-
+import { MdOutlineMailOutline } from "react-icons/md";
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -48,10 +48,11 @@ const Employeedetailsdashboard = () => {
         <li>USER: {userEmail}</li>
         </div>       
         <div className='registerForm'>
-        <GiArchiveRegister />
+        {/* <GiArchiveRegister className='archiveIcon'/> */}
         <li><Link to="/employeedetailsdashboard/registerForm">Employee Register</Link></li>
         </div>
         <div className='email'>
+        {/* <MdOutlineMailOutline /> */}
         <li><Link to="/employeedetailsdashboard/email"> Send Email </Link></li>
         </div>
         <div className='admin'>

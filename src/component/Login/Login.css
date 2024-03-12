@@ -11,10 +11,10 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
   padding: 30px;
   background-color: #f5f4cce8;
-  /* border-radius: 5px; */
+  border-radius: 5px;
   
 }
 
@@ -47,18 +47,19 @@
   width: 300px;
 }
 
-.input-group-prepend {
-  padding: 5px;
+ .input-group-prepend {
+  padding: 10px;
 }
-
+/*
 .input-group-text {
   padding: 0 10px;
-} 
+}  */
 
-.show-password {
+.show-passwordicon {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  /* margin-bottom: 0px; */
+  padding: 10px;
   
 }
 
@@ -70,23 +71,24 @@
 .admin-register {
   display: flex;
   justify-content: flex-end;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   margin-right: 10px;
+  padding: 10px;
  
 }
 
-.admin-register li {
+/* .admin-register li {
   list-style-type: none;
-}
+} */
 
-.admin-register a {
+/* .admin-register a {
   color: #007bff;
   text-decoration:dotted;
-}
+} */
 
-.admin-register a:hover {
+/* .admin-register a:hover {
   text-decoration: underline;
-}
+} */
 .form-button {
   border: none;
   border-radius: 5px;
@@ -96,6 +98,6 @@
   
 }
 
-.form-button:hover {
+/* .form-button:hover {
   background-color:aliceblue;
-}
+} */

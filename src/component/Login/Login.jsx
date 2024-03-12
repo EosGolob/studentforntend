@@ -51,7 +51,7 @@ import { RiLockPasswordFill,RiEyeFill, RiEyeOffFill } from "react-icons/ri";
             onChange={(e) => setPassword(e.target.value)} 
             required className="form-control" />
         </div>
-        <div className="show-password">
+        <div className="show-passwordicon">
         <span className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
           </span>

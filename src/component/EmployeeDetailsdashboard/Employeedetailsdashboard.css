@@ -7,39 +7,64 @@
   width: 250px; /* Adjust width as needed */
   height: 100vh; /* Full height of the viewport */
   background-color: #2d0652; /* Example background color */
-  border-right: 1px solid #ccc; /* Example border to separate from content */
-  padding: 20px; /* Example padding */
+  border-right: 1px solid #ccc;
+  padding: 20px; 
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .content {
   margin-top: 0;
-  flex: 1; /* Grow to fill remaining space */
-  height: 100vh; /* Full height of the viewport */
-  padding: 20px; /* Example padding */
-  box-sizing: border-box; /* Include padding in element's total width and height */
+  flex: 1; 
+  height: 100vh;
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 
-/* Optional: Style for links and buttons */
+
 .EmpDetails li {
-  margin-bottom: 10px; /* Example spacing between list items */
- color: antiquewhite;
+  /* margin-bottom: 10px;  */
+ color: #fcfaf8;
 }
-
+/* 
 button {
-  margin-top: 20px; /* Example spacing between last list item and button */
+  margin-top: 20px;
   border-radius:12px;
-}
+} */
 .user-icon{
   margin-top: 50px;
   align-items: center;
   margin-left:80px;
   display: flex;
   size: 1000px;
-}
+} 
 
 .registerForm{
   display: flex;
   padding: 10px;
   margin-left: 10%;
+}
+.email{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+}
+.admin{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+}
+.interviewresponse{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+}
+.whatsapp{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+}
+.empbtn{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
 }
