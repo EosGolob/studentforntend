@@ -6,6 +6,7 @@ import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
 import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
+import NewEmployee from '../newEmployee/NewEmployee';
 import { FaUserCircle } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -64,6 +65,9 @@ const Employeedetailsdashboard = () => {
         <div className='whatsapp'>
         <li><Link to="/employeedetailsdashboard/whatsapp">Contact</Link></li>
         </div>
+        <div className='newEmployee'>
+        <li><Link to="/employeedetailsdashboard/newEmployee">New Employee</Link></li>
+        </div>
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
@@ -77,6 +81,7 @@ const Employeedetailsdashboard = () => {
             <Route path="/interviewresponse" element={<InterviewResponse />} />
             <Route path ="/registerForm" element={<RegisterForm/>}/>
             <Route path="/whatsapp" element={<WhatsApp />} />
+            <Route path= "/newEmpolyee" element={<NewEmployee/>} />
           </Routes>
         </div>
     </div> 
