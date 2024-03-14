@@ -32,39 +32,58 @@ button {
 } */
 .user-icon{
   margin-top: 50px;
-  align-items: center;
-  margin-left:80px;
-  display: flex;
-  size: 1000px;
+  /* align-items: center; */
+  /* margin-left:80px; */
+  /* display: flex; */
+  /* size: 1000px; */
+  border-bottom: 1px solid rgba(255,255,255,.25);
 } 
 
 .registerForm{
   display: flex;
   padding: 10px;
-  margin-left: 10%;
+  margin-left: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }
 .email{
   display: flex;
   padding: 10px;
   margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }
 .admin{
   display: flex;
   padding: 10px;
   margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }
 .interviewresponse{
   display: flex;
   padding: 10px;
   margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }
 .whatsapp{
   display: flex;
   padding: 10px;
   margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }
 .empbtn{
   display: flex;
   padding: 10px;
   margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+}
+.newEmployee{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+}
+.newEmployeedetails{
+  display: flex;
+  padding: 10px;
+  margin-left:10px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
 }

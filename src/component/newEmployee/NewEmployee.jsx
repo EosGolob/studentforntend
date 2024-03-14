@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import './NewEmployee.css';
 function NewEmployee() {
   const [submissions, setSubmissions] = useState([]);
   const [selectedSubmission, setSelectedSubmission] = useState(null);
@@ -25,11 +25,14 @@ function NewEmployee() {
 
   const handleRowClick = (submission) => {
     setSelectedSubmission(submission);
+    setJoiningDate('');
+    setTrainingStartDate('');
+    setEmployeeCode('');
   };
 
   const handleSubmit = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/employeedetails/${selectedSubmission._id}/updateStatus`, {
+      await axios.put(`http://localhost:5000/api/employeedetails/${selectedSubmission.email}/updateStatus`, {
         status: 'approved',
         joiningDate,
         trainingStartDate,
@@ -44,7 +47,7 @@ function NewEmployee() {
   };
 
   return (
-    <div>
+    <>
       <h1>Approved Submissions</h1>
       <table id="employees-table">
         <thead>
@@ -80,7 +83,7 @@ function NewEmployee() {
           <button onClick={handleSubmit}>Submit</button>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

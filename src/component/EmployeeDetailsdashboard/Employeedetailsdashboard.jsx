@@ -7,9 +7,8 @@ import InterviewResponse from '../interviewResponse/interviewResponse';
 import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
 import NewEmployee from '../newEmployee/NewEmployee';
+import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails'
 import { FaUserCircle } from "react-icons/fa";
-import { GiArchiveRegister } from "react-icons/gi";
-import { MdOutlineMailOutline } from "react-icons/md";
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -44,9 +43,10 @@ const Employeedetailsdashboard = () => {
       <ul className='EmpDetails'>
         <div className='user-icon'>
         <FaUserCircle /> 
+        <li>USER: {userEmail}</li>
         </div>
         <div className='user-details'>
-        <li>USER: {userEmail}</li>
+        
         </div>       
         <div className='registerForm'>
         {/* <GiArchiveRegister className='archiveIcon'/> */}
@@ -68,6 +68,9 @@ const Employeedetailsdashboard = () => {
         <div className='newEmployee'>
         <li><Link to="/employeedetailsdashboard/newEmployee">New Employee</Link></li>
         </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard/newEmployeedetails">New Employee details</Link></li>
+        </div>
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
@@ -81,7 +84,8 @@ const Employeedetailsdashboard = () => {
             <Route path="/interviewresponse" element={<InterviewResponse />} />
             <Route path ="/registerForm" element={<RegisterForm/>}/>
             <Route path="/whatsapp" element={<WhatsApp />} />
-            <Route path= "/newEmpolyee" element={<NewEmployee/>} />
+            <Route path= "/newEmployee" element={<NewEmployee/>} />
+            <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
           </Routes>
         </div>
     </div> 
