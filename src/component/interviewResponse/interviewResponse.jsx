@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // You may need to install axios
+// import Submission from '../studentbackend/models/Submission';
 // import './interviewResponse.css'
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
@@ -22,7 +23,17 @@ function InterviewResponse() {
 
     fetchData();
   }, []);
-
+  const handleRequest= async (id) =>{
+    try {
+      const response = await axios.post('http://localhost:5000/api/send-candidate',{
+        candidateId:id
+      }); // Adjust the API endpoint accordingly
+      console.log("whats data",response)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    
+  } 
   return (
     <div>
       <table id="submissionTable">
@@ -35,6 +46,7 @@ function InterviewResponse() {
             <th>Job Profile</th>
             <th>Manager First status</th>
             <th>Manager First response date and time</th>
+            <th>Manager Second Status Request</th>
             <th>Manager second status</th>
             
             {/* Add more table headers as needed */}
@@ -50,6 +62,7 @@ function InterviewResponse() {
               <td>{submission.jobProfile}</td>
               <td>{submission.status}</td>
               {/* Add more table cells for other fields */}
+              <td><button type='button' onClick={()=>handleRequest(submission._id)}>Send Request</button></td>
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
             </tr>
           ))}
