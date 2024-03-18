@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // You may need to install axios
-// import Submission from '../studentbackend/models/Submission';
 // import './interviewResponse.css'
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
@@ -62,8 +61,10 @@ function InterviewResponse() {
               <td>{submission.jobProfile}</td>
               <td>{submission.status}</td>
               {/* Add more table cells for other fields */}
-              <td><button type='button' onClick={()=>handleRequest(submission._id)}>Send Request</button></td>
+             
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
+              <td><button type='button' onClick={()=>handleRequest(submission._id)}>Send Request</button></td>
+             
             </tr>
           ))}
         </tbody>
