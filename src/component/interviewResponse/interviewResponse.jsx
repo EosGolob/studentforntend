@@ -47,8 +47,6 @@ function InterviewResponse() {
             <th>Manager First response date and time</th>
             <th>Manager Second Status Request</th>
             <th>Manager second status</th>
-            
-            {/* Add more table headers as needed */}
           </tr>
         </thead>
         <tbody>
@@ -59,9 +57,7 @@ function InterviewResponse() {
               <td>{submission.email}</td>
               <td>{submission.interviewDate ? new Date(submission.interviewDate).toLocaleString() :'-'}</td>
               <td>{submission.jobProfile}</td>
-              <td>{submission.status}</td>
-              {/* Add more table cells for other fields */}
-             
+              <td>{submission.status}</td>   
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
               <td><button type='button' onClick={()=>handleRequest(submission._id)}>Send Request</button></td>
              
