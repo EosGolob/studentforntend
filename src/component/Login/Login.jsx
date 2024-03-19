@@ -61,7 +61,7 @@ import { RiLockPasswordFill,RiEyeFill, RiEyeOffFill } from "react-icons/ri";
           <label><Link to="/adminregister">Sing up</Link></label>
           </div>
         {/* <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required className="form-input" /> */}
-        <button type="submit"  style={{ backgroundColor: '#270746',}}className="form-button">Login</button>
+        <button type="submit"  style={{ backgroundColor: '#7546ba',}}className="form-button">Login</button>
       </form>
     </div>
 );
