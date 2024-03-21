@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate ,Link} from 'react-router-dom';
+import {useNavigate ,Link } from 'react-router-dom';
 import './Login.css'
 import { FaUserCircle } from "react-icons/fa";
 import { RiLockPasswordFill,RiEyeFill, RiEyeOffFill } from "react-icons/ri";
-// import jwt from 'jsonwebtoken';
 
   const Login = ({ onLogin}) => {
   const [email, setEmail] = useState('');
@@ -17,27 +16,17 @@ import { RiLockPasswordFill,RiEyeFill, RiEyeOffFill } from "react-icons/ri";
     e.preventDefault(); 
     try {
       const response = await axios.post('http://localhost:5000/api/Admin/login', { email, password });
-      const {token} =response.data;
+      const {token,user} =response.data;
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('userEmail', email); // Set user email in localStorage
-     navigate('/employeedetailsdashboard',{ state: { email } })
-    // Determine user's role from the token or another source
-    // For demonstration purposes, let's assume the role is included in the token
-   /* const decodedToken = jwt.decode(token);
-    const userRole = decodedToken.role;
-
-    // Route the user based on their role
-    switch (userRole) {
-      case 'hr':
-        navigate('/employeedetailsdashboard', { state: { email } });
-        break;
-      case 'manager':
-        navigate('/managerdashboard');
-        break;
-      default:
-        navigate('/');
-        break;
-    }*/
+      console.log(user);
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser.role === 'hr') {
+      navigate('/employeedetailsdashboard_hr');
+    } else if (storedUser.role === 'manager') {
+      navigate('/employeedetailsdashboard_manager');
+    }
   } catch (error) {
       setError('Invalid email or password');
       console.error(error);

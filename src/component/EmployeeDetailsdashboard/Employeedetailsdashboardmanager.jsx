@@ -1,18 +1,13 @@
 import React ,{ useState , useEffect } from 'react';
 import './Employeedetailsdashboard.css';
 import { useLocation , useNavigate, Routes, Route,Link } from 'react-router-dom';
-import Email from '../Sendemail/mail';
 import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
-import WhatsApp from '../whatsapp/whatsapp';
-import RegisterForm from '../Form/RegisterForm';
-import NewEmployee from '../newEmployee/NewEmployee';
-import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails'
+import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
 import { FaUserCircle } from "react-icons/fa";
-const Employeedetailsdashboard = () => {
+const Employeedetailsdashboardmanager = () => {
   const [error, setError] = useState("");
   const location = useLocation();
-  // const email = location.state ? location.state.email:'';
   const userEmail = localStorage.getItem('userEmail');
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -45,46 +40,26 @@ const Employeedetailsdashboard = () => {
         <FaUserCircle /> 
         <li>USER: {userEmail}</li>
         </div>
-        <div className='user-details'>
-        
-        </div>       
-        <div className='registerForm'>
-        {/* <GiArchiveRegister className='archiveIcon'/> */}
-        <li><Link to="/employeedetailsdashboard_hr/registerForm">Employee Register</Link></li>
-        </div>
-        <div className='email'>
-        {/* <MdOutlineMailOutline /> */}
-        <li><Link to="/employeedetailsdashboard_hr/email"> Send Email </Link></li>
-        </div>
+        <div className='user-details'>                  
         <div className='admin'>
-        <li><Link to="/employeedetailsdashboard_hr/admin">Employee details</Link></li>
-        </div>
+        <li><Link to="/employeedetailsdashboard_manager/admin">Employee details</Link></li>
+        </div> 
        <div className='interviewresponse'>
-       <li><Link to="/employeedetailsdashboard_hr/interviewresponse">Interview Response</Link></li>
+       <li><Link to="/employeedetailsdashboard_manager/interviewresponse">Interview Response</Link></li>
        </div>
-        <div className='whatsapp'>
-        <li><Link to="/employeedetailsdashboard_hr/whatsapp">Contact</Link></li>
-        </div>
-        <div className='newEmployee'>
-        <li><Link to="/employeedetailsdashboard_hr/newEmployee">New Employee</Link></li>
-        </div>
         <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_hr/newEmployeedetails">New Employee details</Link></li>
+        <li><Link to="/employeedetailsdashboard_manager/newEmployeedetails">New Employee details</Link></li>
         </div>
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
-        
+        </div>  
       </ul> 
       </div>
       <div className="content">
           <Routes>
-            <Route path="/email" element={<Email />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/interviewresponse" element={<InterviewResponse />} />
-            <Route path ="/registerForm" element={<RegisterForm/>}/>
-            <Route path="/whatsapp" element={<WhatsApp />} />
-            <Route path= "/newEmployee" element={<NewEmployee/>} />
+            <Route path="/interviewresponse" element={<InterviewResponse />} />         
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
           </Routes>
         </div>
@@ -93,4 +68,4 @@ const Employeedetailsdashboard = () => {
   );
 };
 
-export default Employeedetailsdashboard;
+export default  Employeedetailsdashboardmanager;
