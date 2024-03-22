@@ -81,7 +81,7 @@ const AdminPanel = () => {
   return (
     <div className="admin-panel-container" >
       <div className="search-fields">
-        <label>Filter By Date and Email: </label>
+        {/* <label>Filter By Date and Email: </label> */}
         <input
           type="text"
           placeholder="Search by Email"
@@ -92,7 +92,7 @@ const AdminPanel = () => {
           selected={searchDate}
           onChange={date => setSearchDate(date)}
           dateFormat="yyyy-MM-dd"
-          placeholderText="Select Interview Date"
+          placeholderText="Search by Interview Date"
           isClearable
         />
         
@@ -106,7 +106,7 @@ const AdminPanel = () => {
             <th>Middle Name</th>
             <th>Last Name</th>
             <th>Email</th>
-            <th>Interview Date</th>
+            <th>Employee Register Date</th>
             <th>Job Profile</th>
             <th>Qualification</th>
             <th>Phone No</th>
@@ -130,7 +130,7 @@ const AdminPanel = () => {
               <td>{submission.middleName}</td>
               <td>{submission.lastName}</td>
               <td>{submission.email}</td>
-              <td>{submission.interviewDate ? new Date (submission.interviewDate).toLocaleString():'-'}</td>
+              <td>{submission.createdAt ? new Date (submission.createdAt).toLocaleString():'-'}</td>
               <td>{submission.jobProfile}</td>
               <td>{submission.qualification}</td>
               <td>{submission.phoneNo}</td>
