@@ -99,7 +99,7 @@ const AdminPanel = () => {
       </div>
       <br/>
     
-      <table  id="submissionTable" >
+      <table  id="submissionTable" className='admin-table'>
         <thead>
           <tr>
             <th>First Name</th>
