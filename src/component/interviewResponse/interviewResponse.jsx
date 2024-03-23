@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // You may need to install axios
-// import './interviewResponse.css'
+import './interviewResponse.css'
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
 
@@ -35,8 +35,8 @@ function InterviewResponse() {
   } 
   return (
     <div>
-      <table id="submissionTable">
-        <thead>
+      <table id="submissionTable"  className="interviewResponse-table">
+        <thead >
           <tr>
             <th>First Name</th>
             <th>Last Name</th>

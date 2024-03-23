@@ -81,21 +81,9 @@ const AdminPanel = () => {
   return (
     <div className="admin-panel-container" >
       <div className="search-fields">
-        {/* <label>Filter By Date and Email: </label> */}
         <input
-          type="text"
-          placeholder="Search by Email"
-          value={searchEmail}
-          onChange={e => setSearchEmail(e.target.value)}
-        />
-        <DatePicker
-          selected={searchDate}
-          onChange={date => setSearchDate(date)}
-          dateFormat="yyyy-MM-dd"
-          placeholderText="Search by Interview Date"
-          isClearable
-        />
-        
+          type="text" placeholder="Search by Email" value={searchEmail} onChange={e => setSearchEmail(e.target.value)} />
+        <DatePicker selected={searchDate} onChange={date => setSearchDate(date)} dateFormat="yyyy-MM-dd" placeholderText="Search by Interview Date" isClearable/> 
       </div>
       <br/>
     
@@ -103,7 +91,7 @@ const AdminPanel = () => {
         <thead>
           <tr>
             <th>First Name</th>
-            <th>Middle Name</th>
+            <th className='active-row'>Middle Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Employee Register Date</th>
