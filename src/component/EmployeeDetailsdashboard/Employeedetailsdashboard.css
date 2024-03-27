@@ -9,15 +9,21 @@
   background-color: #7546ba; /* Example background color */
   border-right: 1px solid #ccc;
   padding: 20px; 
+  overflow: auto;
+  position: fixed;
+  top :0;
+  left:0;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .content {
   margin-top: 0;
+  margin-left: 250px;
   flex: 1; 
   height: 100vh;
   padding: 20px; 
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  overflow-y: auto; 
 }
 
 

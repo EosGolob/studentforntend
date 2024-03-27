@@ -9,18 +9,20 @@ import RegisterForm from '../Form/RegisterForm';
 import NewEmployee from '../newEmployee/NewEmployee';
 import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails'
 import { FaUserCircle } from "react-icons/fa";
+
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
   const location = useLocation();
   // const email = location.state ? location.state.email:'';
-  const userEmail = localStorage.getItem('userEmail');
+  
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-
+  const userEmail = localStorage.getItem('userEmail');
 // this code is for if user logout the contain won't show after once logout
   useEffect(() => {
     // Check if the user is authenticated
     const isAuthenticated = localStorage.getItem('token');
+   
     if (!isAuthenticated) {
       // Redirect to login page if not authenticated
       navigate('/');
@@ -45,9 +47,7 @@ const Employeedetailsdashboard = () => {
         <FaUserCircle /> 
         <li>USER: {userEmail}</li>
         </div>
-        <div className='user-details'>
-        
-        </div>       
+              
         <div className='registerForm'>
         {/* <GiArchiveRegister className='archiveIcon'/> */}
         <li><Link to="/employeedetailsdashboard_hr/registerForm">Employee Register</Link></li>
@@ -71,11 +71,12 @@ const Employeedetailsdashboard = () => {
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_hr/newEmployeedetails">New Employee details</Link></li>
         </div>
+        </ul> 
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
         
-      </ul> 
+     
       </div>
       <div className="content">
           <Routes>

@@ -1,29 +1,95 @@
-#employees-table {
-    width: 100%;
+  
+  .employees-table{
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
   }
-  
-  #employees-table th, 
-  #employees-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+  .employees-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
     text-align: left;
+    font-weight: bold;
+  }
+  .employees-table th,
+  .employees-table td {
+  padding: 12px 15px;
+  }
+  .employees-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+  }
+  .employees-table tbody tr:nth-of-type(even) {
+    background-color: #f6f6f6;
+  }
+  .employees-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  .employees-table tbody tr.active-row{
+    font-weight:bold;
+    color: #009879;
+  }
+  .table-and-pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
-  #employees-table th {
-    background-color: #f2f2f2;
+  .table-container {
+    margin-bottom: 20px; /* Adjust the spacing between the table and pagination if needed */
   }
   
-  #employees-table tr:hover {
-    background-color: #f5f5f5;
+  .pagination-container {
+    margin-top: 20px; /* Adjust the spacing between the table and pagination if needed */
   }
   
-  #employees-table td:first-child {
+   .form-container {
+    margin-top: 20px;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    /* background-color: #f9f9f9; */
+  } 
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="date"] {
+    width: calc(80% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .form-container button {
+    padding: 8px 16px;
+    background-color: #009879;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  #employees-table td:first-child:hover {
-    background-color: #ddd;
+  .form-container button:hover {
+    background-color: #007f69;
+  }
+  .table-and-form-container {
+    display: flex;
+  }
+  
+  .table-container {
+    flex: 1;
+    margin-right: 20px; /* Adjust the spacing between the table and form */
+  }
+  
+  .form-container {
+    flex: 1;
   }
   

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './NewEmployee.css';
+import './newEmployeeDetails.css';
 
 function NewEmployee() {
   const [submissions, setSubmissions] = useState([]);
@@ -21,7 +21,7 @@ function NewEmployee() {
   return (
     <>
       <h1>Approved Submissions</h1>
-      <table id="employees-table">
+      <table className ="employeesDetails-table">
         <thead>
           <tr>
             <th>First Name</th>
