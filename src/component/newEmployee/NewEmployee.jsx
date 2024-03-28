@@ -11,9 +11,8 @@ function NewEmployee() {
   const [updateStatus, setUpdateStatus] = useState(''); 
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize] = useState(8);
-
-
   console.log("submission value",submissions);
+  
   const fetchApprovedSubmissions = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/employeedetails/approved');
@@ -142,7 +141,9 @@ function NewEmployee() {
           {selectedSubmission && (
             <>
               <h2>Selected Submission</h2>
-              <h1><strong>First Name:</strong> {selectedSubmission.firstName} <strong>Last Name:</strong> {selectedSubmission.lastName}<strong>Email:</strong> {selectedSubmission.email}</h1>
+              <p><strong>First Name:</strong> {selectedSubmission.firstName}</p> 
+              <p><strong>Last Name:</strong> {selectedSubmission.lastName}</p>
+              <p><strong>Email:</strong> {selectedSubmission.email}</p>
             </>
           )}
         </div>

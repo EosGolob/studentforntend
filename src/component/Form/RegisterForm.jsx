@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './registerform.css'
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -22,9 +24,12 @@ const SubmissionForm = () => {
     referral:''
   });
  
+
   const [errors, setErrors] = useState({
     emailUnique:'',
   });
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -36,8 +41,65 @@ const SubmissionForm = () => {
       [name]: ''
     }));
   };
-
   console.log('submiddion data', formData)
+ 
+
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });  
+      if (response.ok) {
+        const result = await response.json();
+        toast.success('Registration Successful');
+        console.log('Submission successful', result);
+        setFormData({
+          firstName:'',
+          middleName:'',
+          lastName:'',
+          email:'',
+          jobProfile:'',
+          qualification:'',
+          phoneNo:'',
+          permanentAddress:'',
+          currentAddress:'',
+          adharNo:'',
+          panNo:'',
+          gender:'',
+          previousEmployee:'',
+          dob:'',
+          maritalStatus:'',
+          referral:''
+        });
+      } else {
+      const data = await response.json();  
+      if (data.errors && data.errors.email && data.errors.email.kind === 'unique') {
+        // Handle unique constraint violation error
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          emailUnique: 'Email address already exists'
+        }));
+      } else {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          emailUnique: 'Email should be unique '
+        }));
+        throw new Error('Submission failed');
+    }
+  }
+   } catch (error) {
+      console.error(error);
+    }
+  };
 
   const validateForm = () => {
     let valid = true;
@@ -74,52 +136,11 @@ const SubmissionForm = () => {
       setErrors(newErrors);
       return valid;
   };
- const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Implement the submission logic here
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      const response = await fetch('http://localhost:5000/api/submissions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });  
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Submission successful', result);
-      } else {
-        const data = await response.json();
-      //   throw new Error('Submission failed');
-      // }
-      if (data.errors && data.errors.email && data.errors.email.kind === 'unique') {
-        // Handle unique constraint violation error
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          emailUnique: 'Email address already exists'
-        }));
-      } else {
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          emailUnique: 'Email should be unique '
-        }));
-        throw new Error('Submission failed');
-    }
-  }
-   } catch (error) {
-      console.error(error);
-    }
-  };
-
 
   
   return (
     <div className='container'>
-      
+         <ToastContainer />
       <form className='formclass' onSubmit={handleSubmit}>
         <h2 className='header'>Employee Register Form</h2> 
         <div className='firstname'>

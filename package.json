@@ -20,6 +20,7 @@
     "react-pagination": "^1.0.0",
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.5",
     "reactstrap": "^9.2.2",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.5",

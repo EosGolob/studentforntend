@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // You may need to install axios
+import axios from 'axios'; 
 import './interviewResponse.css'
+import Pagination  from "react-js-pagination";
+
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize] = useState(8); 
 
   const formatDate = date => {
     const year = date.getFullYear();
@@ -22,6 +26,8 @@ function InterviewResponse() {
 
     fetchData();
   }, []);
+
+
   const handleRequest= async (id) =>{
     try {
       const response = await axios.post('http://localhost:5000/api/send-candidate',{
@@ -33,6 +39,14 @@ function InterviewResponse() {
     }
     
   } 
+
+  const handlePageChange = (PageNumber) => {
+    setPageNumber(PageNumber);
+  };
+  const indexOfLastSubmission = pageNumber * pageSize;
+  const indexOfFirstSubmission = indexOfLastSubmission - pageSize;
+  const currentSubmissions = submissions.slice(indexOfFirstSubmission, indexOfLastSubmission);
+  
   return (
     <div>
       <table id="submissionTable"  className="interviewResponse-table">
@@ -40,8 +54,7 @@ function InterviewResponse() {
           <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
-            <th>Interview Date</th>
+            <th>Email</th>           
             <th>Job Profile</th>
             <th>Manager First status</th>
             <th>Manager First response date and time</th>
@@ -50,12 +63,11 @@ function InterviewResponse() {
           </tr>
         </thead>
         <tbody>
-          {submissions.map(submission => (
+          {currentSubmissions.map(submission => (
             <tr key={submission._id}>
               <td>{submission.firstName}</td>
               <td>{submission.lastName}</td>
-              <td>{submission.email}</td>
-              <td>{submission.interviewDate ? new Date(submission.interviewDate).toLocaleString() :'-'}</td>
+              <td>{submission.email}</td> 
               <td>{submission.jobProfile}</td>
               <td>{submission.status}</td>   
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
@@ -65,6 +77,15 @@ function InterviewResponse() {
           ))}
         </tbody>
       </table>
+      <div className="pagination-container">
+        <Pagination
+          activePage={pageNumber}
+          itemsCountPerPage={pageSize}
+          totalItemsCount={submissions.length}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 }

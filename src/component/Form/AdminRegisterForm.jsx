@@ -6,7 +6,7 @@ const AdminRegistrationForm = () => {
     username: '',
     email: '',
     password: '',
-    role:'admin'
+    role:'hr'
   });
 
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
@@ -60,7 +60,7 @@ const AdminRegistrationForm = () => {
         </label>
         <label style={{ color: 'black' }}>
           Role:
-          <select name="role" value={formData.role} onChange={handleChange} required style={{ display: 'block', margin: '10px 0', padding: '5px', borderRadius: '5px', width: '100%' }}>
+          <select name="role" value={formData.role} onChange={handleChange} required style={{ display: 'block', margin: '20px 0', padding: '5px', borderRadius: '5px', width: '100%' }}>
             {/* <option value="admin">Admin</option> */}
             <option value="hr">HR</option>
             <option value="manager">Manager</option>

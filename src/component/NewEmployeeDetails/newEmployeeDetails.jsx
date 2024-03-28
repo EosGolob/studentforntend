@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './newEmployeeDetails.css';
+import Pagination  from "react-js-pagination";
 
 function NewEmployee() {
   const [submissions, setSubmissions] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize] = useState(8);
 
   const fetchApprovedSubmissions = async () => {
     try {
@@ -14,9 +17,20 @@ function NewEmployee() {
     }
   };
 
+
   useEffect(() => {
     fetchApprovedSubmissions();
   }, []);
+
+
+  const handlePageChange = (PageNumber) => {
+    setPageNumber(PageNumber);
+  };
+
+  const indexOfLastSubmission = pageNumber * pageSize;
+  const indexOfFirstSubmission = indexOfLastSubmission - pageSize;
+  const currentSubmissions = submissions.slice(indexOfFirstSubmission, indexOfLastSubmission);
+  
 
   return (
     <>
@@ -33,7 +47,7 @@ function NewEmployee() {
           </tr>
         </thead>
         <tbody>
-          {submissions.map(submission => (
+          {currentSubmissions.map(submission => (
             <tr key={submission._id}>
               <td>{submission.firstName}</td>
               <td>{submission.lastName}</td>
@@ -45,6 +59,15 @@ function NewEmployee() {
           ))}
         </tbody>
       </table>
+      <div className="pagination-container">
+        <Pagination
+          activePage={pageNumber}
+          itemsCountPerPage={pageSize}
+          totalItemsCount={submissions.length}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      </div>
     </>
   );
 }

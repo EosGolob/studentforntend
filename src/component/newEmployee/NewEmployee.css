@@ -48,9 +48,9 @@
    .form-container {
     margin-top: 20px;
     padding: 20px;
-    /* border: 1px solid #ccc; */
-    /* border-radius: 5px; */
-    /* background-color: #f9f9f9; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
   } 
   
   .form-container label {
@@ -86,7 +86,7 @@
   
   .table-container {
     flex: 1;
-    margin-right: 20px; /* Adjust the spacing between the table and form */
+    margin-right: 20px; 
   }
   
   .form-container {

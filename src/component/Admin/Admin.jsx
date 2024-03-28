@@ -12,18 +12,14 @@ const AdminPanel = () => {
   const [pageNumber, setPageNumber] = useState(1);  
   const [pageSize] = useState(4);
   
-  // const [responseDate, setResponseDate] = useState(null); 
-  // const formatDate = date => {
-  //   const year = date.getFullYear();
-  //   const month = String(date.getMonth() + 1).padStart(2, '0');
-  //   const day = String(date.getDate()).padStart(2, '0');
-  //   return `${year}-${month}-${day}T00:00:00.000+00:00`;
-  // };
+  
   useEffect(() => {
     async function fetchSubmissions() {
       try {
         const response = await axios.get('http://localhost:5000/api/submissions');
-        setSubmissions(response.data);
+        const sortedSubmissions = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        // setSubmissions(response.data);
+        setSubmissions(sortedSubmissions); 
       } catch (error) {
         console.error('Error fetching submissions:', error);
       }
@@ -34,31 +30,17 @@ const AdminPanel = () => {
   const handlePageChange = (PageNumber) => {
     setPageNumber(PageNumber);
   };
-  const indexOfLastSubmission = pageNumber * pageSize;
-  const indexOfFirstSubmission = indexOfLastSubmission - pageSize;
-  const currentSubmissions = submissions.slice(indexOfFirstSubmission, indexOfLastSubmission);
 
-    const filteredSubmissions = currentSubmissions.filter(submission => {
+  // Filter submissions based on search criteria
+    const filteredSubmissions = submissions.filter(submission => {
     const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
     if (!searchDate) return matchEmail; 
     const submissionDate = new Date(submission.interviewDate);
     const matchDate = submissionDate.toDateString() === searchDate.toDateString();
     return matchEmail && matchDate;
-
-  // const filteredSubmissions = submissions.filter(submission => {
-  //   const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
-  //   // If search date is not set, only filter by email
-  //   if (!searchDate) return matchEmail; 
-   
-  //   // Parse submission's interview date into Date object
-  //   const submissionDate = new Date(submission.interviewDate);
+    }).slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+  
     
-  //   // Check if the submission date matches the selected date (ignoring time)
-  //   const matchDate = submissionDate.toDateString() === searchDate.toDateString();
-    
-  //   return matchEmail && matchDate;
-  });
-
   const handleUpdateStatus = async (id, newStatus) => {
     try {
       const updatedSubmissions = submissions.map(submission => {
@@ -71,7 +53,6 @@ const AdminPanel = () => {
   
       const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus, responseDate: new Date() });
       console.log('Submission status updated:', response.data);
-  
       setSubmissions(updatedSubmissions);
     } catch (error) {
       console.error('Error updating submission status:', error);
