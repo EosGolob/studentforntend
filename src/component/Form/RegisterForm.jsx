@@ -140,38 +140,38 @@ const SubmissionForm = () => {
   
   return (
     <div className='container'>
-         <ToastContainer />
+      
+      <ToastContainer />
       <form className='formclass' onSubmit={handleSubmit}>
-        <h2 className='header'>Employee Register Form</h2> 
-        <div className='firstname'>
+
         <label>
           First :
           <input type="text" name="firstName" placeholder='Enter your First Name' value={formData.firstName} onChange={handleChange} required />
           {errors.firstName && <p>{errors.firstName}</p>}
         </label>
-        </div> 
-        <div className='middlename'>
+
+     
         <label>
           Middle :
           <input type="text" name="middleName" placeholder='Enter your Middle Name' value={formData.middleName} onChange={handleChange} required />
           {errors.middleName && <p>{errors.middleName}</p>}
        </label>
-       </div>
-       <div className='lastname'>
+      
+       
         <label >
           Last :
           <input type="text" name="lastName"  placeholder='Enter your Last Name'value={formData.lastName} onChange={handleChange} required />
           {errors.lastName && <p>{errors.lastName}</p>}
         </label>
-        </div>
-        <div className='email'>
+        
+        
         <label >
           Email :
           <input type="email" name="email"  placeholder= 'Enter your Email xyz@gmail.com' value={formData.email} onChange={handleChange} required  />
           {errors.email && <p>{errors.email}</p>}
           {errors.emailUnique && <p>{errors.emailUnique}</p>}
         </label>
-        </div>
+      
        {/*
         <label >
           Interview Date:
@@ -179,27 +179,27 @@ const SubmissionForm = () => {
           {errors.interviewDate && <p>{errors.interviewDate}</p>}
         </label>
       */}
-      <div className='position'>
+      
         <label>
           Position :
           <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required placeholder='Position Applied For'  />
           {errors.jobProfile && <p >{errors.jobProfile}</p>}
         </label>
-        </div>
-        <div className='qualification'>
+        
+        
         <label>
           Qualification :
           <textarea name="qualification" placeholder="Enter your Education Qualification"value={formData.qualification} onChange={handleChange} required />
           {errors.qualification && <p>{errors.qualification}</p>}
         </label>
-        </div>
-        <div className='mobNo'>
+      
+        
         <label>
           Mobile :
           <input type="tel" name="phoneNo" placeholder='Enter your Mobile No' value={formData.phoneNo} onChange={handleChange} required  />
           {errors.phoneNo && <p>{errors.phoneNo}</p>}
         </label>
-        </div>
+      
         {/** 
         <label>
           Password:
@@ -207,34 +207,34 @@ const SubmissionForm = () => {
           {errors.password && <p>{errors.password}</p>}
         </label>
         */}
-        <div className='permanentAdd'>
+        
         <label>
           Permanent :
           <input type="text" name="permanentAddress" placeholder="Enter your permanent house Address"value={formData.permanentAddress} onChange={handleChange} />
           {errors.permanentAddress && <p>{errors.permanentAddress}</p>}
         </label>
-        </div>
-        <div className='currentAdd'>
+        
+       
         <label>
           Current :
           <input type="text" name="currentAddress" placeholder='Enter your current Address' value={formData.currentAddress} onChange={handleChange}  />
           {errors.currentAddress && <p>{errors.currentAddress}</p>}
         </label>
-        </div>
-        <div className='aadharNo'>
+       
+        
         <label>
           Aadhar :
           <input type="text" placeholder='Enter your 16 digit Aadhar No' name="adharNo" value={formData.adharNo} onChange={handleChange} />
           {errors.adharNo && <p>{errors.adharNo}</p>}
         </label>
-        </div>
-        <div className='panNo'>
+        
+        
         <label>
           Pan :
           <input type="text" name="panNo" placeholder='Enter your pan no' value={formData.panNo} onChange={handleChange} />
           {errors.panNo && <p>{errors.panNo}</p>}
         </label>
-        </div>
+       
         <div className='gender'>
         <label>
           Gender :         
@@ -247,20 +247,20 @@ const SubmissionForm = () => {
           {errors.gender && <p >{errors.gender}</p>}
         </label>
         </div>
-        <div className='previousEmp'>
+   
         <label>
           Previous Employee :
           <input type="text" name="previousEmployee" placeholder="Enter you last company name"value={formData.previousEmployee} onChange={handleChange}/>
           {errors.previousEmployee && <p>{errors.previousEmployee}</p>}
         </label>
-        </div>
-        <div className='dob'>
+        
+       
         <label>
           Date of Birth :
           <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
           {errors.dob && <p>{errors.dob}</p>}
         </label>
-        </div>
+       
         <div className='marital'>
         <label>
           Marital Status :
@@ -272,13 +272,13 @@ const SubmissionForm = () => {
           {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
         </label>
         </div>
-        <div className='referral'>
+        
         <label>
           Referral :
           <input type="text" name="referral" placeholder="Enter person who reffer you"value={formData.referral} onChange={handleChange} />
           {errors.referral  && <p>{errors.referral }</p>}
         </label>
-        </div>
+      
         <button type="submit">Submit</button>
       </form>
     </div>
