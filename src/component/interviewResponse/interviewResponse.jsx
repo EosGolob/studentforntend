@@ -8,16 +8,11 @@ function InterviewResponse() {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize] = useState(8); 
 
-  const formatDate = date => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}T00:00:00.000+00:00`;
-  };
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:5000/api/submissions'); // Adjust the API endpoint accordingly
+        const response = await axios.get(' /submissions'); // Adjust the API endpoint accordingly
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,7 +22,12 @@ function InterviewResponse() {
     fetchData();
   }, []);
 
-
+  const formatDate = date => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}T00:00:00.000+00:00`;
+  };
   const handleRequest= async (id) =>{
     try {
       const response = await axios.post('http://localhost:5000/api/send-candidate',{
@@ -91,3 +91,4 @@ function InterviewResponse() {
 }
 
 export default InterviewResponse;
+

@@ -7,7 +7,8 @@ import InterviewResponse from '../interviewResponse/interviewResponse';
 import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
 import NewEmployee from '../newEmployee/NewEmployee';
-import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails'
+import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
+import Sendmsg from '../sendmsg/sendmsg';
 import { FaUserCircle } from "react-icons/fa";
 
 const Employeedetailsdashboard = () => {
@@ -71,6 +72,9 @@ const Employeedetailsdashboard = () => {
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_hr/newEmployeedetails">New Employee details</Link></li>
         </div>
+        <div className='msg'>
+        <li><Link to="/employeedetailsdashboard_hr/sendmsg">msg</Link></li>
+        </div>
         </ul> 
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
@@ -87,6 +91,7 @@ const Employeedetailsdashboard = () => {
             <Route path="/whatsapp" element={<WhatsApp />} />
             <Route path= "/newEmployee" element={<NewEmployee/>} />
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
+            <Route exact path= "/sendmsg" element={<Sendmsg/>}/>
           </Routes>
         </div>
     </div> 
