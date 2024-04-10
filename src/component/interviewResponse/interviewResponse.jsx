@@ -12,7 +12,7 @@ function InterviewResponse() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(' /submissions'); // Adjust the API endpoint accordingly
+        const response = await axios.get('http://localhost:5000/api/submissions'); 
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -37,9 +37,7 @@ function InterviewResponse() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-    
   } 
-
   const handlePageChange = (PageNumber) => {
     setPageNumber(PageNumber);
   };
@@ -89,6 +87,5 @@ function InterviewResponse() {
     </div>
   );
 }
-
 export default InterviewResponse;
 

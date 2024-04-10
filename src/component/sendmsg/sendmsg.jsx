@@ -11,11 +11,8 @@ function SendMessageButton() {
           console.error('Error sending message:', error);
         }
       };
-      
-
   return (
     <button onClick={handleClick}>Send Message</button>
   );
 }
-
 export default SendMessageButton;
