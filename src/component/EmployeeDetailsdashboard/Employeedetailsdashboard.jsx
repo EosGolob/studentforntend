@@ -81,7 +81,7 @@ const Employeedetailsdashboard = () => {
             <Route path="/interviewresponse" element={<InterviewResponse />} />
             <Route path ="/registerForm" element={<RegisterForm/>}/>
             <Route path= "/newEmployee" element={<NewEmployee/>} />
-            <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />               
+            <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
           </Routes>
         </div>
     </div> 
