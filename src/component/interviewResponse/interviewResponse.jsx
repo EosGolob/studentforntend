@@ -12,7 +12,7 @@ function InterviewResponse() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(' /submissions'); // Adjust the API endpoint accordingly
+        const response = await axios.get('http://localhost:5000/api/submissions'); // Adjust the API endpoint accordingly
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -28,6 +28,7 @@ function InterviewResponse() {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}T00:00:00.000+00:00`;
   };
+ /*
   const handleRequest= async (id) =>{
     try {
       const response = await axios.post('http://localhost:5000/api/send-candidate',{
@@ -39,6 +40,19 @@ function InterviewResponse() {
     }
     
   } 
+*/
+const handleRequest = async (id, firstName,email, jobProfile) => {
+  try {
+    const response = await axios.post('http://localhost:5000/api/send-candidate', {
+      firstName,
+      email,
+      jobProfile
+    });
+    console.log('Response:', response.data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
   const handlePageChange = (PageNumber) => {
     setPageNumber(PageNumber);
@@ -71,7 +85,7 @@ function InterviewResponse() {
               <td>{submission.jobProfile}</td>
               <td>{submission.status}</td>   
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
-              <td><button type='button' onClick={()=>handleRequest(submission._id)}>Send Request</button></td>
+              <td><button type='button' onClick={()=>handleRequest(submission._id, submission.firstName,submission.email, submission.jobProfile)}>Send Request</button></td>
              
             </tr>
           ))}
