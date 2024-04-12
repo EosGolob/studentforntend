@@ -12,7 +12,11 @@ function InterviewResponse() {
   useEffect(() => {
     async function fetchData() {
       try {
+<<<<<<< HEAD
         const response = await axios.get('http://localhost:5000/api/submissions'); // Adjust the API endpoint accordingly
+=======
+        const response = await axios.get('http://localhost:5000/api/submissions'); 
+>>>>>>> e6e992f43c858b2c5e48d1e55d493272692e3393
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -38,8 +42,8 @@ function InterviewResponse() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-    
   } 
+<<<<<<< HEAD
 */
 const handleRequest = async (id, firstName,email, jobProfile) => {
   try {
@@ -54,6 +58,8 @@ const handleRequest = async (id, firstName,email, jobProfile) => {
   }
 };
 
+=======
+>>>>>>> e6e992f43c858b2c5e48d1e55d493272692e3393
   const handlePageChange = (PageNumber) => {
     setPageNumber(PageNumber);
   };
@@ -103,6 +109,5 @@ const handleRequest = async (id, firstName,email, jobProfile) => {
     </div>
   );
 }
-
 export default InterviewResponse;
 
