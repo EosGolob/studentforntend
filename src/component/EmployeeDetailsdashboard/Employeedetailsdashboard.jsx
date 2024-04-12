@@ -4,11 +4,9 @@ import { useLocation , useNavigate, Routes, Route,Link } from 'react-router-dom'
 import Email from '../Sendemail/mail';
 import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
-import WhatsApp from '../whatsapp/whatsapp';
 import RegisterForm from '../Form/RegisterForm';
 import NewEmployee from '../newEmployee/NewEmployee';
 import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
-import Sendmsg from '../sendmsg/sendmsg';
 import { FaUserCircle } from "react-icons/fa";
 
 const Employeedetailsdashboard = () => {
@@ -63,17 +61,11 @@ const Employeedetailsdashboard = () => {
        <div className='interviewresponse'>
        <li><Link to="/employeedetailsdashboard_hr/interviewresponse">Interview Response</Link></li>
        </div>
-        <div className='whatsapp'>
-        <li><Link to="/employeedetailsdashboard_hr/whatsapp">Contact</Link></li>
-        </div>
         <div className='newEmployee'>
         <li><Link to="/employeedetailsdashboard_hr/newEmployee">New Employee</Link></li>
         </div>
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_hr/newEmployeedetails">New Employee details</Link></li>
-        </div>
-        <div className='msg'>
-        <li><Link to="/employeedetailsdashboard_hr/sendmsg">msg</Link></li>
         </div>
         </ul> 
         <div className='empbtn'> 
@@ -88,10 +80,8 @@ const Employeedetailsdashboard = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/interviewresponse" element={<InterviewResponse />} />
             <Route path ="/registerForm" element={<RegisterForm/>}/>
-            <Route path="/whatsapp" element={<WhatsApp />} />
             <Route path= "/newEmployee" element={<NewEmployee/>} />
-            <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
-            <Route exact path= "/sendmsg" element={<Sendmsg/>}/>
+            <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />               
           </Routes>
         </div>
     </div> 

@@ -18,7 +18,6 @@ const AdminPanel = () => {
       try {
         const response = await axios.get('http://localhost:5000/api/submissions');
         const sortedSubmissions = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        // setSubmissions(response.data);
         setSubmissions(sortedSubmissions); 
       } catch (error) {
         console.error('Error fetching submissions:', error);
@@ -35,7 +34,7 @@ const AdminPanel = () => {
     const filteredSubmissions = submissions.filter(submission => {
     const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
     if (!searchDate) return matchEmail; 
-    const submissionDate = new Date(submission.interviewDate);
+    const submissionDate = new Date(submission.createdAt);
     const matchDate = submissionDate.toDateString() === searchDate.toDateString();
     return matchEmail && matchDate;
     }).slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
@@ -46,11 +45,9 @@ const AdminPanel = () => {
       const updatedSubmissions = submissions.map(submission => {
         if (submission._id === id) {
           return { ...submission, status: newStatus, responseDate: new Date() };
-          // Ensure to set responseDate to current date and time
         }
         return submission;
       });
-  
       const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus, responseDate: new Date() });
       console.log('Submission status updated:', response.data);
       setSubmissions(updatedSubmissions);
@@ -67,12 +64,11 @@ const AdminPanel = () => {
         <DatePicker selected={searchDate} onChange={date => setSearchDate(date)} dateFormat="yyyy-MM-dd" placeholderText="Search by Interview Date" isClearable/> 
       </div>
       <br/>
-    
       <table  id="submissionTable" className='admin-table'>
         <thead>
           <tr>
             <th>First Name</th>
-            <th className='active-row'>Middle Name</th>
+            <th >Middle Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Employee Register Date</th>
