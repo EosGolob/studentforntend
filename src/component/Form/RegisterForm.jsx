@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './registerform.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCalendar,faUser ,faEnvelope , faGraduationCap, faMobileScreenButton,faLocationDot,faIdCard,faAddressCard,faBuilding,faPen} from '@fortawesome/free-solid-svg-icons';
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
     firstName:'',
@@ -140,37 +142,33 @@ const SubmissionForm = () => {
   
   return (
     <div className='container'>
-      
+      <h2>Registration Form </h2>
+      <div className='from-container'>
       <ToastContainer />
       <form className='formclass' onSubmit={handleSubmit}>
-
-        <label>
-          First :
-          <input type="text" name="firstName" placeholder='Enter your First Name' value={formData.firstName} onChange={handleChange} required />
+        <div className='input-name'>
+          <i><FontAwesomeIcon className = 'nameicon'icon={faUser} /></i>
+          <input type="text" className='name' name="firstName" placeholder='First Name' value={formData.firstName} onChange={handleChange} required />
           {errors.firstName && <p>{errors.firstName}</p>}
-        </label>
-
-     
-        <label>
-          Middle :
-          <input type="text" name="middleName" placeholder='Enter your Middle Name' value={formData.middleName} onChange={handleChange} required />
+          {/* <span>
+          <i><FontAwesomeIcon className = 'nameicon' icon={faUser} /></i>
+          <input type="text"  className='name' name="middleName" placeholder='Middle Name' value={formData.middleName} onChange={handleChange} required />
           {errors.middleName && <p>{errors.middleName}</p>}
-       </label>
-      
-       
-        <label >
-          Last :
-          <input type="text" name="lastName"  placeholder='Enter your Last Name'value={formData.lastName} onChange={handleChange} required />
+          </span> */}
+          <span>       
+          <i><FontAwesomeIcon className = 'nameicon' icon={faUser} /></i> 
+          <input type="text" className='name' name="lastName"  placeholder='Last Name'value={formData.lastName} onChange={handleChange} required />
           {errors.lastName && <p>{errors.lastName}</p>}
-        </label>
+          </span>
+        </div>
         
-        
-        <label >
-          Email :
-          <input type="email" name="email"  placeholder= 'Enter your Email xyz@gmail.com' value={formData.email} onChange={handleChange} required  />
+       
+        <div className='input-email'>
+          <i><FontAwesomeIcon className='emailicon' icon={faEnvelope}/></i>
+          <input type="email" className="inputemail" name="email"  placeholder= 'Email:xyz@gmail.com' value={formData.email} onChange={handleChange} required  />
           {errors.email && <p>{errors.email}</p>}
           {errors.emailUnique && <p>{errors.emailUnique}</p>}
-        </label>
+       </div>
       
        {/*
         <label >
@@ -180,26 +178,24 @@ const SubmissionForm = () => {
         </label>
       */}
       
-        <label>
-          Position :
-          <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required placeholder='Position Applied For'  />
+       <div className='input-position'>
+          {/* <textarea name="jobProfile" value={formData.jobProfile} onChange={handleChange} required placeholder='Position Applied For'  /> */}
+          <i><FontAwesomeIcon className='jobprofileicon' icon={faPen}/></i>
+          <input className='jobprofile' name="jobProfile" value={formData.jobProfile} onChange={handleChange} required placeholder='Position Applied For'></input>
           {errors.jobProfile && <p >{errors.jobProfile}</p>}
-        </label>
-        
-        
-        <label>
-          Qualification :
-          <textarea name="qualification" placeholder="Enter your Education Qualification"value={formData.qualification} onChange={handleChange} required />
+          <span>
+          <i><FontAwesomeIcon className='jobprofileicon' icon={faGraduationCap}/></i>
+          {/* <textarea name="qualification" placeholder="Enter your Education Qualification"value={formData.qualification} onChange={handleChange} required /> */}
+          <input  className='jobprofile'name="qualification" placeholder="Education Qualification"value={formData.qualification} onChange={handleChange} required ></input>
           {errors.qualification && <p>{errors.qualification}</p>}
-        </label>
-      
+          </span>
+        </div>
         
-        <label>
-          Mobile :
-          <input type="tel" name="phoneNo" placeholder='Enter your Mobile No' value={formData.phoneNo} onChange={handleChange} required  />
+        <div className='input-email'>
+        <i><FontAwesomeIcon className='emailicon' icon={faMobileScreenButton}/></i>
+          <input type="tel" className='inputemail' name="phoneNo" placeholder='Mobile No' value={formData.phoneNo} onChange={handleChange} required  />
           {errors.phoneNo && <p>{errors.phoneNo}</p>}
-        </label>
-      
+        </div>
         {/** 
         <label>
           Password:
@@ -208,79 +204,82 @@ const SubmissionForm = () => {
         </label>
         */}
         
-        <label>
-          Permanent :
-          <input type="text" name="permanentAddress" placeholder="Enter your permanent house Address"value={formData.permanentAddress} onChange={handleChange} />
+        <div className='input-address'>
+          <i><FontAwesomeIcon  className='addressicon'icon={faLocationDot}/></i>
+          <input type="text" className='address1' name="permanentAddress" placeholder="Permanent Address"value={formData.permanentAddress} onChange={handleChange} />
           {errors.permanentAddress && <p>{errors.permanentAddress}</p>}
-        </label>
         
-       
-        <label>
-          Current :
-          <input type="text" name="currentAddress" placeholder='Enter your current Address' value={formData.currentAddress} onChange={handleChange}  />
+          <i><FontAwesomeIcon className='addressicon' icon={faLocationDot}/></i>
+          <input type="text" className='address1' name="currentAddress" placeholder='Current Address' value={formData.currentAddress} onChange={handleChange}  />
           {errors.currentAddress && <p>{errors.currentAddress}</p>}
-        </label>
-       
+    
+        </div>
         
-        <label>
-          Aadhar :
-          <input type="text" placeholder='Enter your 16 digit Aadhar No' name="adharNo" value={formData.adharNo} onChange={handleChange} />
+        <div className='input-aadhar'>
+          <i><FontAwesomeIcon className='aadharicon' icon={faAddressCard}/></i>
+          <input type="text"  className ='aadhar'placeholder='Enter your 16 digit Aadhar No' name="adharNo" value={formData.adharNo} onChange={handleChange} />
           {errors.adharNo && <p>{errors.adharNo}</p>}
-        </label>
-        
-        
-        <label>
-          Pan :
-          <input type="text" name="panNo" placeholder='Enter your pan no' value={formData.panNo} onChange={handleChange} />
+
+          <i><FontAwesomeIcon  style={{color: "red"}}className='aadharicon'icon={faIdCard}/></i>
+          <input type="text" className='aadhar' name="panNo" placeholder='Enter your pan no' value={formData.panNo} onChange={handleChange} />
           {errors.panNo && <p>{errors.panNo}</p>}
-        </label>
+        </div>
+        
+        
        
-        <div className='gender'>
-        <label>
-          Gender :         
-          <select name="gender" value={formData.gender} onChange={handleChange} required >
+        <div className='gender'>       
+          <select className='select-gender' name="gender" value={formData.gender} onChange={handleChange} required >
           <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
             </select>
           {errors.gender && <p >{errors.gender}</p>}
-        </label>
+        <div className='arrow'></div>
+        <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required >
+            <option value="">Select Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+          </select>
+          {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
+
         </div>
    
-        <label>
-          Previous Employee :
+       <div className='input-previous'>
+       <i><FontAwesomeIcon icon={faBuilding}/></i>
           <input type="text" name="previousEmployee" placeholder="Enter you last company name"value={formData.previousEmployee} onChange={handleChange}/>
           {errors.previousEmployee && <p>{errors.previousEmployee}</p>}
-        </label>
+      
+     
+          <input type="text" name="referral" placeholder="Enter person who reffer you"value={formData.referral} onChange={handleChange} />
+          {errors.referral  && <p>{errors.referral }</p>}
+          
+       </div>
         
        
-        <label>
+       <div className='input-dob'>
           Date of Birth :
-          <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+          <i><FontAwesomeIcon className='jobprofileicon' icon={faCalendar}/></i>
+          <input type="date" className='birthdate' name="dob" value={formData.dob} onChange={handleChange} />
           {errors.dob && <p>{errors.dob}</p>}
-        </label>
+          </div> 
        
-        <div className='marital'>
-        <label>
-          Marital Status :
+        {/* <div className='marital'>       
           <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange} required >
             <option value="">Select Marital Status</option>
             <option value="Single">Single</option>
             <option value="Married">Married</option>
           </select>
           {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
-        </label>
-        </div>
+        </div> */}
         
-        <label>
-          Referral :
-          <input type="text" name="referral" placeholder="Enter person who reffer you"value={formData.referral} onChange={handleChange} />
-          {errors.referral  && <p>{errors.referral }</p>}
-        </label>
-      
+        
+
+        <div className='input-submitbtn'>
         <button type="submit">Submit</button>
+        </div>
       </form>
+      </div>
     </div>
   );
 };
