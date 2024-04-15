@@ -72,9 +72,13 @@ function InterviewResponse() {
               <td>{submission.lastName}</td>
               <td>{submission.email}</td> 
               <td>{submission.jobProfile}</td>
-              <td>{submission.status}</td>   
+              <td className={submission.status.toLowerCase()}>{submission.status }</td>   
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
-              <td><button type='button' onClick={()=>handleRequest(submission._id, submission.firstName,submission.email, submission.jobProfile)}>Send Request</button></td>
+              <td>
+                <div className="outer-btn">
+                <button style={{backgroundColor:'green' ,padding: '5px',cursor: 'pointer'}} className='manbutton' type='button' onClick={()=>handleRequest(submission._id, submission.firstName,submission.email, submission.jobProfile)}>Send Response</button>
+                </div>
+              </td>
              
             </tr>
           ))}

@@ -1,21 +1,88 @@
 
-button {
-  background-color: #4caf50;
-  border: none;
+.inner-div-btn1 {
+  background-color: #18a837;
   color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.inner-div-btn1:hover {
+  background-color: #0056b3;
 }
+
+.inner-div-btn1:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}
+
+.inner-div-btn2 {
+  background-color: #b93b15;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inner-div-btn2:hover {
+  background-color: #0056b3;
+}
+
+.inner-div-btn2:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}
+.inner-div-btn3 {
+  background-color: #cabe10;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inner-div-btn3:hover {
+  background-color: #0056b3;
+}
+
+.inner-div-btn3:active {
+  background-color: #0056b3;
+  transform: translateY(1px);
+}
+/* Style for the button container */
+.outer-div-btn {
+  /* Optional container styles */
+  white-space: nowrap;
+}
+
+/* Adjust spacing between buttons if needed */
+.outer-div-btn button {
+  margin-right: 5px; /* Adjust as needed */
+  display: inline-block; /* Display buttons in one line */
+  margin-right: 10px; /* Adj*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .search-fields {
@@ -115,3 +182,6 @@ padding: 12px 15px;
   fornt-weight:bold;
   color: #009879;
 }
+
+
+

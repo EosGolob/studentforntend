@@ -30,3 +30,36 @@
     fornt-weight:bold;
     color: #009879;
   }
+
+  .pending {
+    color: rgba(117, 117, 8, 0.541);
+  }
+  
+  .approved {
+    color: green;
+  }
+  
+  .rejected {
+    color: red;
+  }
+  .hold{
+    color:#520307
+  }
+
+.manbutton{
+    background-color: #a83a18;
+    color: white;
+    border-radius: '5px'
+   
+   
+    
+  }
+  
+  .manbutton:hover {
+    background-color: #0056b3;
+  }
+  
+  .manbutton:active {
+    background-color: #0056b3;
+    transform: translateY(1px);
+  }

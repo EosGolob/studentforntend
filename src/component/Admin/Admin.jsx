@@ -68,7 +68,7 @@ const AdminPanel = () => {
         <thead>
           <tr>
             <th>First Name</th>
-            <th >Middle Name</th>
+            {/* <th >Middle Name</th> */}
             <th>Last Name</th>
             <th>Email</th>
             <th>Employee Register Date</th>
@@ -92,7 +92,7 @@ const AdminPanel = () => {
           {filteredSubmissions.map(submission => (
             <tr key={submission._id}>
               <td>{submission.firstName}</td>
-              <td>{submission.middleName}</td>
+              {/* <td>{submission.middleName}</td> */}
               <td>{submission.lastName}</td>
               <td>{submission.email}</td>
               <td>{submission.createdAt ? new Date (submission.createdAt).toLocaleString():'-'}</td>
@@ -108,11 +108,14 @@ const AdminPanel = () => {
               <td>{submission.dob ? new Date(submission.dob).toLocaleString():'-'}</td>
               <td>{submission.maritalStatus}</td>
               <td>{submission.referral}</td> 
-              <td>
-                <button onClick={() => handleUpdateStatus(submission._id, 'approved')} >Approve</button>
-                <button onClick={() => handleUpdateStatus(submission._id, 'rejected')} >Reject</button>
-                <button onClick={() => handleUpdateStatus(submission._id, 'hold')} >hold</button>
+              <td> 
+                <div className='outer-div-btn'>   
+                <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'approved')} >Approve</button>
+                <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'rejected')} >Reject</button>
+                <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'hold')} >hold</button>
+                </div>
               </td>
+              
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
             </tr>
           ))}

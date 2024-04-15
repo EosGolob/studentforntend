@@ -19,7 +19,7 @@ body{
 .container h2{
   font-size: 24px;
   line-height: 24px;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
@@ -32,11 +32,11 @@ body{
   padding: 8px 11px;
 }
 .name{
-  width: 40%;
+  width: 45%;
   padding: 8px 0 8px 40px;
 }
 .input-name span{
-  margin-left: 35px;
+  margin-left: 40px;
 }  
 
 .input-name i{
@@ -46,13 +46,12 @@ body{
   border-right: 1px solid #cccccc;
 }
 
-/* .inputemail{
-  width: 100%;
-}  */
+
 .input-email{
   width: 90%;
   position: relative;
   margin: 20px auto;
+  margin-left: 15px;
 }
 .emailicon{
   padding: 8px 11px;
@@ -71,77 +70,73 @@ body{
   border-right: 1px solid #cccccc;
 }
 
-.input-position{
-  width: 90%;
-  position: relative;
-  margin: 20px auto;
-}
-.jobprofileicon{
-  padding: 8px 11px;
-}
-.jobprofile{
-  width: 40%;
-  padding: 8px 0 8px 40px;
-}
-.input-position span{
-  margin-left: 35px;
-}  
 
-.input-position i{
-  position: absolute;
-  font-size: 18px;
+.gender {
+  display: flex;
+  align-items: center;
+}
+
+.select-gender, select[name="maritalStatus"] {
+  padding: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-size: 16px;
+  margin-left: 60px;
+}
+
+
+
+.input-dob {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.input-dob label {
+  margin-right: 10px;
+}
+
+.input-dob i {
+  margin-right: 10px;
+}
+
+.input-dob input[type="date"] {
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.input-dob p {
+  color: red;
+  margin: 0;
+}
+
+/* Button styling */
+
+.jobprofileicon {
   color: blue;
-  border-right: 1px solid #cccccc;
 }
 
-
-
-
-
-.input-address{
-  width: 90%;
-  position: relative;
-  margin: 20px auto;
-}
-.addressicon{
-  padding: 8px 11px;
-}
-.address1{
-  width: 45%;
-  padding: 8px 0 8px 40px;
-}
-.input-address i{
-  position: absolute;
-  font-size: 18px;
-  color: blue;
-  border-right: 1px solid #cccccc;
+.input-submitbtn {
+  text-align: center; 
 }
 
-
-
-.input-aadhar{
-  width: 90%;
-  position: relative;
-  margin: 20px auto;
-}
-.aadharicon{
-  padding: 8px 11px;
-}
-.aadhar{
-  width: 45%;
-  padding: 8px 0 8px 40px;
-}
-/* .input-aadhar i{
-  margin-left: 10px;
-} */
-.input-aadhar i{
-  position: absolute;
-  font-size: 18px;
-  color: rgb(119, 38, 45);
-  border-right: 1px solid #cccccc;
+.input-submitbtn button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-
-
-
+.input-submitbtn button:hover {
+  background-color: #0056b3; 
+}
