@@ -7,7 +7,9 @@ import InterviewResponse from '../interviewResponse/interviewResponse';
 import RegisterForm from '../Form/RegisterForm';
 import NewEmployee from '../newEmployee/NewEmployee';
 import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
-import { FaUserCircle } from "react-icons/fa";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReInterviewSchedule from '../reInterviewSchedule/reInterviewSchedule';
 
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
@@ -43,7 +45,7 @@ const Employeedetailsdashboard = () => {
     <div className="side-dashboard">
       <ul className='EmpDetails'>
         <div className='user-icon'>
-        <FaUserCircle /> 
+        <i><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></i>
         <li>USER: {userEmail}</li>
         </div>
               
@@ -67,6 +69,9 @@ const Employeedetailsdashboard = () => {
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_hr/newEmployeedetails">New Employee details</Link></li>
         </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_hr/reinterviewSchedule">Re Interviews Schedule</Link></li>
+        </div>
         </ul> 
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
@@ -82,6 +87,7 @@ const Employeedetailsdashboard = () => {
             <Route path ="/registerForm" element={<RegisterForm/>}/>
             <Route path= "/newEmployee" element={<NewEmployee/>} />
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
+            <Route path="/reinterviewSchedule" element={<ReInterviewSchedule />} />
           </Routes>
         </div>
     </div> 

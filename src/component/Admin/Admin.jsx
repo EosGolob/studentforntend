@@ -40,17 +40,38 @@ const AdminPanel = () => {
     }).slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
   
     
+  // const handleUpdateStatus = async (id, newStatus) => {
+  //   try {
+  //     const updatedSubmissions = submissions.map(submission => {
+  //       if (submission._id === id) {
+  //         return { ...submission, status: newStatus, responseDate: new Date() };
+  //       }
+  //       return submission;
+  //     });
+  //     const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus, responseDate: new Date() });
+  //     console.log('Submission status updated:', response.data);
+  //     setSubmissions(updatedSubmissions);
+  //   } catch (error) {
+  //     console.error('Error updating submission status:', error);
+  //   }
+  // };
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      const updatedSubmissions = submissions.map(submission => {
-        if (submission._id === id) {
-          return { ...submission, status: newStatus, responseDate: new Date() };
-        }
-        return submission;
-      });
       const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus, responseDate: new Date() });
       console.log('Submission status updated:', response.data);
-      setSubmissions(updatedSubmissions);
+      
+      // Update local state
+      const updatedSubmission = response.data; // Assuming API returns updated submission object
+      setSubmissions(prevSubmissions => {
+        return prevSubmissions.map(submission => {
+          if (submission._id === updatedSubmission._id) {
+            // Add the new status change to status history
+            const newStatusHistory = [...submission.statusHistory, { status: newStatus, date: updatedSubmission.responseDate }];
+            return { ...submission, status: newStatus, responseDate: updatedSubmission.responseDate, statusHistory: newStatusHistory };
+          }
+          return submission;
+        });
+      });
     } catch (error) {
       console.error('Error updating submission status:', error);
     }
@@ -110,13 +131,18 @@ const AdminPanel = () => {
               <td>{submission.referral}</td> 
               <td> 
                 <div className='outer-div-btn'>   
-                <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'approved')} >Approve</button>
-                <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'rejected')} >Reject</button>
-                <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'hold')} >hold</button>
+                <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'Approved')} >Approve</button>
+                <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'Rejected')} >Reject</button>
+                <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'Hold')} >hold</button>
                 </div>
               </td>
               
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
+              {/* <td> {submission.statusHistory.map((historyItem, index) => (
+                   <div key={index}>
+                   {historyItem.status} - {new Date(historyItem.date).toLocaleString()}
+              </div>
+              ))}</td> */}
             </tr>
           ))}
         </tbody>

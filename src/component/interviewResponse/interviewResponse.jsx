@@ -13,6 +13,7 @@ function InterviewResponse() {
     async function fetchData() {
       try {
         const response = await axios.get('http://localhost:5000/api/submissions');
+        const sortedSubmissions = response.data.sort((a, b) => new Date(b.createdAt)- new Date(a.createdAt));
         setSubmissions(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -22,12 +23,12 @@ function InterviewResponse() {
     fetchData();
   }, []);
 
-  const formatDate = date => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}T00:00:00.000+00:00`;
-  };
+  // const formatDate = date => {
+  //   const year = date.getFullYear();
+  //   const month = String(date.getMonth() + 1).padStart(2, '0');
+  //   const day = String(date.getDate()).padStart(2, '0');
+  //   return `${year}-${month}-${day}T00:00:00.000+00:00`;
+  // };
 
   const handleRequest = async (id, firstName, email, jobProfile) => {
     try {
@@ -62,6 +63,7 @@ function InterviewResponse() {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Emp Register date</th>
             <th>Job Profile</th>
             <th>Manager First status</th>
             <th>Manager First response date and time</th>
@@ -75,6 +77,7 @@ function InterviewResponse() {
               <td>{submission.firstName}</td>
               <td>{submission.lastName}</td>
               <td>{submission.email}</td>
+              <td>{submission.createdAt ? new Date (submission.createdAt).toLocaleString():'-'}</td>
               <td>{submission.jobProfile}</td>
               <td className={submission.status.toLowerCase()}>{submission.status}</td>
               <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>

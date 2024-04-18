@@ -1,0 +1,59 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+} */
+
+.login-container {
+    display: flex;
+    height: 100vh; /* Set full height of the viewport */
+  }
+  
+  .login-img-div,
+  .login-card {
+    flex: 1; /* Each child takes equal space */
+  }
+  
+  .login-img-div {
+    background-color: #f0f0f0; /* Background color for the image div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-card {
+    background-color: #fff; /* Background color for the card div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-form-main{
+    width: 300px;
+    height: 400px;
+    padding-top: 50px;
+    padding-left: 20px;
+    background-color: burlywood;
+  }
+
+
+  .form-button3 {
+    background-color: black; /* Green */
+    /* border: none; */
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    /* text-decoration: none; */
+    /* display: inline-block; */
+    font-size: 16px;
+    margin: 4px 2px;
+    /* transition-duration: 0.4s; */
+    /* cursor: pointer; */
+  }
+
+  .form-heading{
+    font-size: 30px;
+    font-weight: bold;
+    color: #29c9c9d3;
+  }
