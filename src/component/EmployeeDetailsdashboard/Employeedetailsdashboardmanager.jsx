@@ -4,6 +4,9 @@ import { useLocation , useNavigate, Routes, Route,Link } from 'react-router-dom'
 import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
 import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
+// import InterviewApprovedStatus from '../InterviewApprovedStatus/interviewApprovedStatus';
+// import InterviewingStatus from '../InterviewRejectedStatus/interviewRejectedStatus';
+// import InterviewHoldStatus from '../InterviewHoldStatus/interviewHoldStatus';
 import { FaUserCircle } from "react-icons/fa";
 const Employeedetailsdashboardmanager = () => {
   const [error, setError] = useState("");
@@ -50,6 +53,15 @@ const Employeedetailsdashboardmanager = () => {
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_manager/newEmployeedetails">New Employee details</Link></li>
         </div>
+        {/* <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewapprovedstatus">Approved </Link></li>
+        </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewHoldstatus">Hold</Link></li>
+        </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewingstatus">Interviewing</Link></li>
+        </div> */}
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
@@ -61,6 +73,9 @@ const Employeedetailsdashboardmanager = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/interviewresponse" element={<InterviewResponse />} />         
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
+            {/* <Route path = "/interviewapprovedstatus" element = {<InterviewApprovedStatus/>}></Route>
+            <Route path = "/interviewHoldstatus" element = {<InterviewHoldStatus/>}></Route>
+            <Route path = "/interviewingstatus" element = {<InterviewingStatus/>}></Route> */}
           </Routes>
         </div>
     </div> 
