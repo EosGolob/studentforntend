@@ -10,7 +10,7 @@ function InterviewingStatus() {
     const [searchEmail, setSearchEmail] = useState('');
     const [searchDate, setSearchDate] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);  
-    const [pageSize] = useState(4);
+    const [pageSize] = useState(5);
     const [totalItemsCount, setTotalItemsCount] = useState(0);
 
      
@@ -39,16 +39,17 @@ function InterviewingStatus() {
       const submissionDate = new Date(submission.createdAt);
       const matchDate = submissionDate.toDateString() === searchDate.toDateString();
       return matchEmail && matchDate && matchStatus;
-    }).slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-    
+    });
+    // .slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+    const paginatedSubmissions = filteredSubmissions.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
   
   
   
         // Calculate start and end indices for pagination
-      const startIndex = (pageNumber - 1) * pageSize;
-      const endIndex = startIndex + pageSize;
-      const paginatedSubmissions = filteredSubmissions.slice(startIndex, endIndex);
-    
+      // const startIndex = (pageNumber - 1) * pageSize;
+      // const endIndex = startIndex + pageSize;
+      // const paginatedSubmissions = filteredSubmissions.slice(startIndex, endIndex);
+
       const handleUpdateStatus = async (id, newStatus) => {
         try {
           const response = await axios.put(`http://localhost:5000/api/submissions/${id}/updateStatus`, { status: newStatus, responseDate: new Date() });
@@ -126,18 +127,13 @@ function InterviewingStatus() {
             <td>{submission.referral}</td> 
             <td> 
               <div className='outer-div-btn'>   
-            {/*  <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'Approved')} >Approve</button> */}
-              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'Rejected')} >Reject</button>
-            {/*  <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'Hold')} >hold</button> */}
+              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'FTF')} >Approved For Face Interview</button>
+             <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'Hold')} >HOLD</button>
               </div>
             </td>
             
             <td>{submission.responseDate ? new Date(submission.responseDate).toLocaleString() : '-'}</td>
-            {/* <td> {submission.statusHistory.map((historyItem, index) => (
-                 <div key={index}>
-                 {historyItem.status} - {new Date(historyItem.date).toLocaleString()}
-            </div>
-            ))}</td> */}
+      
             <td>{submission.status}</td>
           </tr>
     

@@ -4,10 +4,11 @@ import { useLocation , useNavigate, Routes, Route,Link } from 'react-router-dom'
 import Admin from '../Admin/Admin';
 import InterviewResponse from '../interviewResponse/interviewResponse';
 import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
-// import InterviewApprovedStatus from '../InterviewApprovedStatus/interviewApprovedStatus';
-// import InterviewingStatus from '../InterviewRejectedStatus/interviewRejectedStatus';
-// import InterviewHoldStatus from '../InterviewHoldStatus/interviewHoldStatus';
+import InterviewApprovedStatus from '../interviewApprovedStatus/interviewApprovedStatus';
+import InterviewingStatus from '../interviewingStatus/interviewingStatus';
+import InterviewHoldStatus from '../interviewHoldStatus/interviewHoldStatus';
 import { FaUserCircle } from "react-icons/fa";
+import ReInterviewSchedule from '../reInterviewSchedule/reInterviewSchedule';
 const Employeedetailsdashboardmanager = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -47,23 +48,26 @@ const Employeedetailsdashboardmanager = () => {
         <div className='admin'>
         <li><Link to="/employeedetailsdashboard_manager/admin">Employee details</Link></li>
         </div> 
-       <div className='interviewresponse'>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewingstatus">Interviewing</Link></li>
+        </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewapprovedstatus">Screaning Response</Link></li>
+        </div>
+        <div className='newEmployeedetails'>
+        <li><Link to="/employeedetailsdashboard_manager/interviewHoldstatus">Select From Interview</Link></li>
+        </div>
+        <div className='interviewresponse'>
        <li><Link to="/employeedetailsdashboard_manager/interviewresponse">Interview Response</Link></li>
        </div>
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_manager/newEmployeedetails">New Employee details</Link></li>
         </div>
-        {/* <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_manager/interviewapprovedstatus">Approved </Link></li>
-        </div>
         <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_manager/interviewHoldstatus">Hold</Link></li>
+        <li><Link to="/employeedetailsdashboard_manager/reinterviewAndnonSelected">Re_interview_Schedule</Link></li>
         </div>
-        <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_manager/interviewingstatus">Interviewing</Link></li>
-        </div> */}
         <div className='empbtn'> 
-        <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
+         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
         </div>
         </div>  
       </ul> 
@@ -73,9 +77,10 @@ const Employeedetailsdashboardmanager = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/interviewresponse" element={<InterviewResponse />} />         
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
-            {/* <Route path = "/interviewapprovedstatus" element = {<InterviewApprovedStatus/>}></Route>
+            <Route path = "/interviewapprovedstatus" element = {<InterviewApprovedStatus/>}></Route>
             <Route path = "/interviewHoldstatus" element = {<InterviewHoldStatus/>}></Route>
-            <Route path = "/interviewingstatus" element = {<InterviewingStatus/>}></Route> */}
+            <Route path = "/interviewingstatus" element = {<InterviewingStatus/>}></Route>
+            <Route path = "/reinterviewAndnonSelected" element = {<ReInterviewSchedule/>}></Route>
           </Routes>
         </div>
     </div> 

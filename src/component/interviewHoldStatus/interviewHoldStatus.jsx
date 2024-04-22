@@ -34,7 +34,7 @@ function InterviewHoldStatus() {
     
       const filteredSubmissions = submissions && submissions.filter(submission => {
       const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
-      const matchStatus = submission.status.toLowerCase() === "hold" || submission.status.toLowerCase() === "Hold";
+      const matchStatus = submission.status.toLowerCase() === "SFTF" || submission.status.toLowerCase() === "sftf";
       if (!searchDate) return matchEmail && matchStatus; 
       const submissionDate = new Date(submission.createdAt);
       const matchDate = submissionDate.toDateString() === searchDate.toDateString();
@@ -127,8 +127,8 @@ function InterviewHoldStatus() {
             <td> 
               <div className='outer-div-btn'>   
             {/*  <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'Approved')} >Approve</button> */}
-              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'Rejected')} >Reject</button>
-            {/*  <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'Hold')} >hold</button> */}
+              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'SMR')} >SELECTED FOR MANAGER</button>
+             <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'RMR')} >REJECTED FROM MANAGER</button>
               </div>
             </td>
             

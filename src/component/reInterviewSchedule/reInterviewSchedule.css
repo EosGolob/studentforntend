@@ -1,0 +1,65 @@
+.reInterviewResponse-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  }
+  .reInterviewResponse-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  .reInterviewResponse-table th,
+  .reInterviewResponse-table td {
+  padding: 12px 15px;
+  }
+  .reInterviewResponse-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+  }
+  .reInterviewResponse-table tbody tr:nth-of-type(even) {
+    background-color: #f6f6f6;
+  }
+  .reInterviewResponse-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  .reInterviewResponse-table tbody tr.active-row{
+    font-weight:bold;
+    color: #009879;
+  }
+
+  .pending {
+    color: rgba(117, 117, 8, 0.541);
+  }
+  
+  .approved {
+    color: green;
+  }
+  
+  .rejected {
+    color: red;
+  }
+  .hold{
+    color:#520307
+  }
+
+.manbutton{
+    background-color: #a83a18;
+    color: white;
+    border-radius: '5px'
+   
+   
+    
+  }
+  
+  .manbutton:hover {
+    background-color: #0056b3;
+  }
+  
+  .manbutton:active {
+    background-color: #0056b3;
+    transform: translateY(1px);
+  }

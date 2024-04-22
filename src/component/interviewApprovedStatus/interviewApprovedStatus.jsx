@@ -33,7 +33,7 @@ function InterviewApprovedStatus() {
   
     const filteredSubmissions = submissions.filter(submission => {
     const matchEmail = submission.email.toLowerCase().includes(searchEmail.toLowerCase());
-    const matchStatus = submission.status.toLowerCase() === "approved" || submission.status.toLowerCase() === "Approved";
+    const matchStatus = submission.status.toLowerCase() === "ftf" || submission.status.toLowerCase() === "FTF";
     if (!searchDate) return matchEmail && matchStatus; 
     const submissionDate = new Date(submission.createdAt);
     const matchDate = submissionDate.toDateString() === searchDate.toDateString();
@@ -126,8 +126,8 @@ function InterviewApprovedStatus() {
             <td> 
               <div className='outer-div-btn'>   
             {/*  <button className='inner-div-btn1' onClick={() => handleUpdateStatus(submission._id, 'Approved')} >Approve</button> */}
-              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'Rejected')} >Reject</button>
-            {/*  <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'Hold')} >hold</button> */}
+              <button className='inner-div-btn2' onClick={() => handleUpdateStatus(submission._id, 'SFTF')} >SELECTED FOR FTF</button>
+             <button className='inner-div-btn3' onClick={() => handleUpdateStatus(submission._id, 'RFTF')} >REJECTED FOR FTF</button>
               </div>
             </td>
             
