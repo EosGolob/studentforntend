@@ -1,5 +1,5 @@
 import './App.css';
-import Login from './component/Login/Login';
+import Login from './component/Login/Login copy';
 import Employeedetailsdashboard from './component/EmployeeDetailsdashboard/Employeedetailsdashboard';
 import Employeedetailsdashboardmanager from'./component/EmployeeDetailsdashboard/Employeedetailsdashboardmanager'
 import AdminRegisterForm  from "./component/Form/AdminRegisterForm";

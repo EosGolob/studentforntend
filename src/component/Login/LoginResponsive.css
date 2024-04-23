@@ -1,59 +1,118 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
-} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 .login-container {
-    display: flex;
-    height: 100vh; /* Set full height of the viewport */
-  }
-  
-  .login-img-div,
-  .login-card {
-    flex: 1; /* Each child takes equal space */
-  }
-  
-  .login-img-div {
-    background-color: #f0f0f0; /* Background color for the image div */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-card {
-    background-color: #fff; /* Background color for the card div */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-form-main{
-    width: 300px;
-    height: 400px;
-    padding-top: 50px;
-    padding-left: 20px;
-    background-color: burlywood;
-  }
+  display: flex;
+  height: 100vh;
+}
 
+.login-img-div,
+.login-card {
+  flex: 1;
+}
 
-  .form-button3 {
-    background-color: black; /* Green */
-    /* border: none; */
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    /* text-decoration: none; */
-    /* display: inline-block; */
-    font-size: 16px;
-    margin: 4px 2px;
-    /* transition-duration: 0.4s; */
-    /* cursor: pointer; */
-  }
+.login-img-div {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 35px;
+  color: rgb(18, 162, 219);
+}
 
-  .form-heading{
-    font-size: 30px;
-    font-weight: bold;
-    color: #29c9c9d3;
+.login-card {
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login-form-main {
+  /* margin-top: 20%; */
+  /* margin-left: 30%; */
+  margin: 10% auto;
+  width: 350px;
+  height: 400px;
+  padding-top: 50px;
+  padding-left: 20px;
+  background-color: rgb(248, 248, 252);
+  position: relative;
+  border: 2px solid rgb(18, 162, 219);;
+  border-radius: 5px;
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-button-user-login {
+  background-color: rgba(148, 3, 3, 0.363);
+  /* border:#0e0000; */
+  border-radius: 5px;
+  
+  color: rgb(228, 219, 219);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  /* transition-duration: 0.4s; */
+  cursor: pointer;
+}
+
+.form-heading {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* color: rgb(0, 255, 149); */
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input-group .input-group-prepend {
+  flex: 0 0 auto;
+  margin-right: 10px;
+
+}
+
+.input-group input {
+  padding: 10px;
+  width: 80%;
+
+}
+
+.show-passwordicon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* CSS for typing effect */
+@keyframes typing {
+  from {
+    width: 0;
   }
+  to {
+    width: 100%;
+  }
+}
+
+/* Apply the typing effect to the h2 element */
+h5 {
+  overflow: hidden;
+  border-right: 3px solid #19bef069; /* Cursor style */
+  white-space: nowrap; /* Prevent text from wrapping */
+  animation: typing 3s steps(20) infinite alternate; /* Adjust duration and steps as needed */
+}

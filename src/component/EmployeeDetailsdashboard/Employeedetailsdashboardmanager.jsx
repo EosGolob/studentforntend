@@ -9,6 +9,8 @@ import InterviewingStatus from '../interviewingStatus/interviewingStatus';
 import InterviewHoldStatus from '../interviewHoldStatus/interviewHoldStatus';
 import { FaUserCircle } from "react-icons/fa";
 import ReInterviewSchedule from '../reInterviewSchedule/reInterviewSchedule';
+import RegisterForm from '../Form/RegisterForm';
+import SendEmail from '../Sendemail/mail';
 const Employeedetailsdashboardmanager = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -44,7 +46,13 @@ const Employeedetailsdashboardmanager = () => {
         <FaUserCircle /> 
         <li>USER: {userEmail}</li>
         </div>
-        <div className='user-details'>                  
+        <div className='user-details'>
+        <div className='admin'>
+        <li><Link to="/employeedetailsdashboard_manager/sendEmail">New_Employee_Send_Email</Link></li>
+        </div>     
+        <div className='admin'>
+        <li><Link to="/employeedetailsdashboard_manager/employeeRegister">New_Employee_Registeration</Link></li>
+        </div>                 
         <div className='admin'>
         <li><Link to="/employeedetailsdashboard_manager/admin">Employee details</Link></li>
         </div> 
@@ -75,6 +83,8 @@ const Employeedetailsdashboardmanager = () => {
       <div className="content">
           <Routes>
             <Route path="/admin" element={<Admin />} />
+            <Route path = "/employeeRegister" element = {<RegisterForm/>}/>
+            <Route path ="/sendEmail" element = {<SendEmail/>}/>
             <Route path="/interviewresponse" element={<InterviewResponse />} />         
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
             <Route path = "/interviewapprovedstatus" element = {<InterviewApprovedStatus/>}></Route>

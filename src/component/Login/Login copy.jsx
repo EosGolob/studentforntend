@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-// import './LoginResponsive.css'
-import './Login.css'
+import './LoginResponsive.css'
 import { FaUserCircle } from "react-icons/fa";
 import { RiLockPasswordFill, RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 
@@ -37,16 +36,17 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="login-container">
-      {/* <div className='login-img-div'> */}
+      <div className='login-img-div'>
 
-        {/* <h2>Welcome To HR Registertion Portal</h2> */}
-      {/* </div> */}
+        <h5>Welcome To HR Registertion Portal</h5>
+      </div>
       <div className="login-card">
         <div className="login-form-main">
           <form onSubmit={handleLogin} className="login-form">
-            <h2 className="form-heading">Admin Login</h2>
+            <div className = 'h2-heading-font'> 
+            <h2 className="form-heading">ADMIN LOGIN</h2>
             {error && <p className="error-message">{error}</p>}
-
+            </div>
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text"><FaUserCircle /></span>
@@ -66,14 +66,16 @@ const Login = ({ onLogin }) => {
                 {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
               </span>
               <label> Show  Password</label>
-            </div>
-            <div className='admin-register'>
               <label><Link to="/adminregister">Sing up</Link></label>
-            </div>           
+            </div>
+
+            {/* <div className='admin-register'>
+              
+            </div> */}
             {/* <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required className="form-input" /> */}
-            <div className="form-button">
-              <button type="submit" style={{ backgroundColor: '#7546ba' }} >Login</button>
-            </div>         
+            <div className="form-button-user-login" >
+              <button type="submit">Login</button>
+            </div>
             {/* <Button type='submit'   className='form-button'>Login</Button> */}
           </form>
         </div>
