@@ -8,6 +8,10 @@ function ReInterviewSchedule() {
 
     useEffect(() => {
         fetchData();
+        const intervalId = setInterval(() => {
+            fetchData();
+        }, 60000);
+        return () => clearInterval(intervalId);
     }, []);
 
 
@@ -39,6 +43,7 @@ function ReInterviewSchedule() {
                 });
                 return updatedSubmissions;
             });
+            fetchData();
         } catch (error) {
             console.error('Error updating submission status:', error);
         }
@@ -82,9 +87,6 @@ function ReInterviewSchedule() {
                                      onChange={(e) => handleDropdownChange(empolyee._id, e)}
                                  >
                                      <option value="Rejected">Rejected</option>
-                                     {/* <option value="Hold">Hold</option>
-                                     <option value="RFTF">RFTF</option>
-                                     <option value="RMR">RMR</option> */}
                                      <option value="Interviewing">Interviewing </option>
                                  </select>
                              </td>

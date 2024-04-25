@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './registerform.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPeopleRobbery, faCalendar, faUser, faEnvelope, faGraduationCap, faMobileScreenButton, faLocationDot, faIdCard, faAddressCard, faBuilding, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleRobbery,faUser,faEnvelope, faGraduationCap, faMobileScreenButton, faLocationDot, faIdCard, faAddressCard, faBuilding, faPen } from '@fortawesome/free-solid-svg-icons';
 
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -197,13 +197,7 @@ const SubmissionForm = () => {
           </div>
 
 
-          {/** 
-        <label>
-          Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          {errors.password && <p>{errors.password}</p>}
-        </label>
-        */}
+        
 
           <div className='input-name'>
             <i><FontAwesomeIcon className='nameicon' icon={faLocationDot} /></i>
@@ -263,6 +257,13 @@ const SubmissionForm = () => {
           {errors.maritalStatus && <p>{errors.maritalStatus}</p>}
         </div> */}
 
+ 
+        <label>
+          Password:
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          {errors.password && <p>{errors.password}</p>}
+        </label>
+        
 
           <div className='input-submitbtn'>
             <button type="submit">Submit</button>

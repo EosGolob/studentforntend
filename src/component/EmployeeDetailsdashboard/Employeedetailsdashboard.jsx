@@ -10,9 +10,7 @@ import NewEmployeeDetails from'../NewEmployeeDetails/newEmployeeDetails';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReInterviewSchedule from '../reInterviewSchedule/reInterviewSchedule';
-import InterviewApprovedStatus from '../interviewApprovedStatus/interviewApprovedStatus';
-import InterviewHoldStatus from '../interviewHoldStatus/interviewHoldStatus';
-import InterviewingStatus from '../interviewingStatus/interviewingStatus';
+
 
 const Employeedetailsdashboard = () => {
   const [error, setError] = useState("");
@@ -75,15 +73,6 @@ const Employeedetailsdashboard = () => {
         <div className='newEmployeedetails'>
         <li><Link to="/employeedetailsdashboard_hr/reinterviewSchedule">Re Interviews Schedule</Link></li>
         </div>
-        <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_hr/interviewapprovedstatus">Aprroved</Link></li>
-        </div>
-        <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_hr/interviewHoldstatus">Hold</Link></li>
-        </div>
-        <div className='newEmployeedetails'>
-        <li><Link to="/employeedetailsdashboard_hr/interviewingstatus">Interviewing</Link></li>
-        </div>
         </ul> 
         <div className='empbtn'> 
         <button onClick={handleLogout} style={{backgroundColor:'white', width:'100px'}}>Logout</button>
@@ -100,9 +89,7 @@ const Employeedetailsdashboard = () => {
             <Route path= "/newEmployee" element={<NewEmployee/>} />
             <Route path= "/newEmployeedetails" element={<NewEmployeeDetails/>} />
             <Route path="/reinterviewSchedule" element={<ReInterviewSchedule />} />
-            <Route path = "/interviewapprovedstatus" element = {<InterviewApprovedStatus/>}></Route>
-            <Route path = "/interviewHoldstatus" element = {<InterviewHoldStatus/>}></Route>
-            <Route path = "/interviewingstatus" element = {<InterviewingStatus/>}></Route>
+            
           </Routes>
         </div>
     </div> 

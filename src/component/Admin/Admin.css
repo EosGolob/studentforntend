@@ -1,6 +1,6 @@
 
 .inner-div-btn1 {
-  background-color: #18a837;
+  background-color: #6d3fb1;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -160,7 +160,7 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 .admin-table thead tr {
-  background-color: #009879;
+  background-color: #6d3fb1;
   color: #ffffff;
   text-align: left;
   font-weight: bold;

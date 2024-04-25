@@ -8,7 +8,7 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
   }
   .reInterviewResponse-table thead tr {
-    background-color: #009879;
+    background-color: #6d3fb1;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
@@ -24,11 +24,11 @@
     background-color: #f6f6f6;
   }
   .reInterviewResponse-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #6d3fb1;
   }
   .reInterviewResponse-table tbody tr.active-row{
     font-weight:bold;
-    color: #009879;
+    color: #6d3fb1;
   }
 
   .pending {

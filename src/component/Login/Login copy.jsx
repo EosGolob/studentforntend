@@ -7,6 +7,8 @@ import { RiLockPasswordFill, RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 
 
 const Login = ({ onLogin }) => {
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,7 +22,7 @@ const Login = ({ onLogin }) => {
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('userEmail', email); // Set user email in localStorage
+      localStorage.setItem('userEmail', email);
       console.log(user);
       const storedUser = JSON.parse(localStorage.getItem('user'));
       if (storedUser.role === 'hr') {
@@ -37,16 +39,17 @@ const Login = ({ onLogin }) => {
   return (
     <div className="login-container">
       <div className='login-img-div'>
-
         <h5>Welcome To HR Registertion Portal</h5>
       </div>
       <div className="login-card">
         <div className="login-form-main">
           <form onSubmit={handleLogin} className="login-form">
-            <div className = 'h2-heading-font'> 
-            <h2 className="form-heading">ADMIN LOGIN</h2>
-            {error && <p className="error-message">{error}</p>}
+            
+            <div className='h2-heading-font'>
+              <h2 className="form-heading">ADMIN LOGIN</h2>
+              {error && <p className="error-message">{error}</p>}
             </div>
+
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text"><FaUserCircle /></span>
@@ -58,7 +61,7 @@ const Login = ({ onLogin }) => {
               <div className="input-group-prepend">
                 <span className="input-group-text"><RiLockPasswordFill /></span>
               </div>
-              <input type={showPassword ? "text" : "password"} id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required className="form-control" />
+              <input type={showPassword ? "text" : "password"} id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required  />
             </div>
 
             <div className="show-passwordicon">
@@ -69,14 +72,10 @@ const Login = ({ onLogin }) => {
               <label><Link to="/adminregister">Sing up</Link></label>
             </div>
 
-            {/* <div className='admin-register'>
-              
-            </div> */}
-            {/* <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required className="form-input" /> */}
             <div className="form-button-user-login" >
               <button type="submit">Login</button>
             </div>
-            {/* <Button type='submit'   className='form-button'>Login</Button> */}
+
           </form>
         </div>
       </div>

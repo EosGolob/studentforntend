@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './interviewResponse.css'
 import Pagination from "react-js-pagination";
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function InterviewResponse() {
   const [submissions, setSubmissions] = useState([]);
@@ -38,8 +40,26 @@ function InterviewResponse() {
         email,
         jobProfile
       }); // Adjust the API endpoint accordingly
+      toast.success('Request sent successfully',{
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
       console.log("Response", response.data)
     } catch (error) {
+      toast.error('Failed to send message on WhatsApp. Please try again later.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.error('Error fetching data:', error);
     }
   }
@@ -53,10 +73,9 @@ function InterviewResponse() {
 
 
   
-
-
   return (
     <div>
+       <ToastContainer />
       <table id="submissionTable" className="interviewResponse-table">
         <thead >
           <tr>

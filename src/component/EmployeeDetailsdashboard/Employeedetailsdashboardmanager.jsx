@@ -42,9 +42,10 @@ const Employeedetailsdashboardmanager = () => {
     <div className="dashboard-container">
     <div className="side-dashboard">
       <ul className='EmpDetails'>
+     
         <div className='user-icon'>
         <FaUserCircle /> 
-        <li>USER: {userEmail}</li>
+        <li>USER:{userEmail}</li>
         </div>
         <div className='user-details'>
         <div className='admin'>
